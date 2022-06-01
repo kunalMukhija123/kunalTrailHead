@@ -1,0 +1,87 @@
+<apex:page controller="showParChildRec">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" type="text/css"/>
+   <apex:form >
+   
+       <style>
+           .verticalLine {
+              border-left: thin solid #C0C0C0;
+            }
+            
+       </style>
+       
+        <apex:pageBlock >
+            
+            <apex:pageBlockButtons >
+                <apex:commandButton value="Save"/>
+                <apex:commandButton value="Cancel"/>
+                <apex:commandButton value="Email Goals to FBC"/>
+                <apex:commandButton value="Clone Goals"/>
+                <apex:commandButton value="Print"/>
+            </apex:pageBlockButtons>
+            
+            <apex:pageBlockButtons >
+                <apex:commandButton style="float : right"  value="Add Goal"/>
+            </apex:pageBlockButtons>
+           
+               <div>
+                   <apex:repeat value="{!goalList}" var="go">
+                       <div class="table-responsive" style="border:1px solid grey;">
+                           <table class="table table-bordered table-stripped">
+                               <thead>
+                                   <tr>
+                                       <th style="width:5%;"></th>
+                                       <th>
+                                           <apex:outputField value="{!go.Name}"/>
+                                       </th>
+                                       
+                                       <th style="width:10%;"> 
+                                           <apex:commandButton value="Edit"/>   
+                                       </th>
+                                       <th style="width:10%;">
+                                           <apex:commandButton value="Cancel"/>
+                                       </th>
+                                   </tr>
+                               </thead>
+                               <tbody></tbody>
+                           </table>
+                               
+                           <div class="table-responsive" style="margin-left:25px; margin-right:25px;">
+                                <table class="table table-bordered table-stripped">
+                                   <thead>
+                                       <tr>
+                                           <th> Action Title </th>
+                                           <th> Action Detail  </th>
+                                           <th> Due Date </th>
+                                           <th> Action owner </th>
+                                           <th> Completed Date </th>
+                                           <th style="width:10%;"></th>
+                                           <th style="width:10%;"></th>
+                                       </tr>
+                                   </thead>
+                                <tbody>
+                                    <apex:repeat value="{!go.Activities__r}" var="task">
+                                      <tr>
+                                          <td>
+                                            
+                                          </td>
+                                          <td></td>
+                                          <td>
+                                              <apex:outputField value="{!task.activitydate}">  
+                                              <!--    <apex:outputLink value="{!URLFOR($Action.MyObject__c.Edit, record.Id)}">  -->
+                                              </apex:outputField>
+                                          </td>
+                                          <td></td>
+                                          <td></td>
+                                          <td><apex:commandlink value="Edit"/></td>
+                                          <td></td>
+                                          </tr>
+                                    </apex:repeat>
+                                </tbody>
+                             </table>
+                           </div>
+                       </div>
+                   </apex:repeat>
+               </div>
+          </apex:pageBlock>
+      </apex:form>                         
+</apex:page>

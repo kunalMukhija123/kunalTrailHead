@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>PCQW__Status_Indicator__c</fullName>
+    <deprecated>false</deprecated>
+    <externalId>false</externalId>
+    <formula>IMAGE(CASE(Status , 
+&quot;New&quot;,&quot;/resource/PCQW__CaseNew&quot;,
+&quot;Closed&quot;,&quot;/resource/PCQW__CaseClosed&quot;,
+&quot;Escalated&quot;,&quot;/resource/PCQW__CaseEscalated&quot;, 
+&quot;Working&quot;,&quot;/resource/PCQW__CaseWorking&quot;, 
+&quot;/resource/PCQW__CaseNew&quot;), &quot;Status&quot;,22,24)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Indicator</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

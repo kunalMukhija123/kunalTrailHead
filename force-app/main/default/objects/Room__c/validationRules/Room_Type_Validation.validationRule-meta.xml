@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Room_Type_Validation</fullName>
+    <active>true</active>
+    <errorConditionFormula>ISPICKVAL( Type__c , &quot;&quot;)</errorConditionFormula>
+    <errorDisplayField>Type__c</errorDisplayField>
+    <errorMessage>Note : Type should not be Null.</errorMessage>
+</ValidationRule>

@@ -1,0 +1,176 @@
+<apex:page standardController="Account" sidebar="false" showHeader="false" standardStylesheets="false">
+
+    <head>
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" />
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+        <style>
+            .container-fluid {
+                margin-top: 10px;
+            }
+        </style>
+    </head>
+
+    <body>
+        <apex:form >
+            <div class="container-fluid">
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <!--      <div class="panel panel-success">     -->
+                        <!--     <div class="panel-heading">Account Information</div>    -->
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="page-header">
+
+
+                                    <h1 style="display:inline"><img src="http://res.cloudinary.com/candidbusiness/image/upload/v1455406304/dispute-bills-chicago.png" class="img-responsive" /><br/> {!Account.Name} <br/><small> Account Detail</small></h1>
+
+                                    <div style="float:right; margin-top: -20px;" class='btn-group btn-group-md responsive'>
+                                        <button type="button" class="btn btn-primary btn-responsive">Edit</button>
+                                        <button type="button" class="btn btn-primary btn-responsive">Save</button>
+                                        <button type="button" class="btn btn-primary btn-responsive">Cancel</button>
+                                        <button type="button" class="btn btn-primary btn-responsive">Clone</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label for="aName">Account Name</label>
+                                    <br/>
+                                    <apex:outputField value="{!Account.Name}" />
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label for="Type">Account Number</label>
+                                    <br/>
+                                    <apex:outputField value="{!Account.AccountNumber}" />
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label for="Website">Fax</label>
+                                    <br/>
+                                    <apex:outputField value="{!Account.Fax}" />
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label for="aName">Phone</label>
+                                    <br/>
+                                    <apex:outputField value="{!Account.Phone}" />
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <hr size="30"></hr>
+
+                        <div id="exTab2" class="container-fluid">
+                            <ul class="nav nav-tabs panel-primary">
+                                <li class="active">
+                                    <a href="#1" data-toggle="tab">Related</a>
+                                </li>
+                                <li>
+                                    <a href="#2" data-toggle="tab">Details</a>
+                                </li>
+                            </ul><br/>
+
+
+                        </div>
+
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="1">
+                                <h3>Related Information !!!</h3>
+                            </div>
+                            <div class="tab-pane " id="2">
+                                <div class="panel panel-default col-md-6">
+                                    <div class="panel-body">
+                                        <div class="modal-body row">
+                                            <div class="col-md-6">
+
+
+                                                <div>
+                                                    <apex:outputLabel value="Account Owner" /><br/>
+                                                    <apex:outputField value="{!Account.ownerId}" styleClass="form-control" />
+                                                </div>
+                                                <hr></hr>
+                                                
+                                                <div>
+                                                    <apex:outputLabel value="Acccount Name" />
+                                                    <apex:inputField value="{!account.name}" styleClass="form-control" />
+                                                </div>
+                                                <hr></hr>
+                                                
+                                                <div>
+                                                    <apex:outputLabel value="Account Type" />
+                                                    <apex:inputField value="{!Account.type}" styleClass="form-control" />
+                                                </div>
+                                                <hr></hr>
+                                                
+                                                <div>
+                                                    <apex:outputLabel value="Phone" />
+                                                    <apex:inputField value="{!Account.phone}" styleClass="form-control" />
+                                                </div>
+                                                <hr></hr>
+                                                
+                                                <div>
+                                                    <apex:outputLabel value="Number Of Employees" />
+                                                    <apex:inputField value="{!Account.NumberOfEmployees}" styleClass="form-control" />
+                                                </div>
+                                                <hr></hr>
+
+                                            </div>
+
+                                            <div class="col-md-6" style="margin-top: -14px;">
+
+                                                <div>
+                                                    <apex:outputLabel value="Industry" />
+                                                    <apex:inputField value="{!Account.industry}" styleClass="form-control" />
+                                                </div>
+                                                <hr></hr>
+
+                                                <div>
+                                                    <apex:outputLabel value="Fax" />
+                                                    <apex:inputField value="{!Account.fax}" styleClass="form-control" />
+                                                </div>
+                                                <hr></hr>
+
+                                                <div>
+                                                    <apex:outputLabel value="Annual Revenue" />
+                                                    <apex:inputField value="{!Account.AnnualRevenue}" styleClass="form-control" />
+                                                </div>
+                                                <hr></hr>
+
+                                                <div>
+                                                    <apex:outputLabel value="Site" />
+                                                    <apex:inputField value="{!Account.site}" styleClass="form-control" />
+                                                </div>
+                                                <hr></hr>
+
+                                                <div>
+                                                    <apex:outputLabel value="Account Source" />
+                                                    <apex:inputField value="{!Account.accountsource}" styleClass="form-control" />
+                                                </div>
+                                                <hr></hr>
+
+                                            </div>
+                                        </div>
+
+                                        <div style="margin-left: auto;">
+                                            <button type="button" class="btn btn-primary btn-md btn-responsive ">Save</button>
+                                            <button type="button" class="btn btn-primary btn-md btn-responsive ">Cancel</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </apex:form>
+    </body>
+</apex:page>

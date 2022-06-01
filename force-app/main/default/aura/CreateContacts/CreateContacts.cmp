@@ -1,0 +1,46 @@
+<aura:component controller="CreateContact" implements="force:hasRecordId">
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    <aura:attribute name="newContact" type="Contact" default="{ 'sobjectType': 'Contact',
+                                                              }"/><br/><br/>
+    <aura:attribute name="recordId" type="Id" />
+    <div>
+        <ui:inputText aura:id="con_num" label="Enter Number to create contacts:"
+                      class="slds-input" 
+                      labelClass="slds-form-element__label"
+                      required="true" value="{!v.newContact.Num_of_Con__c}"/><br/>
+    </div>
+    <div>
+        <ui:button label="Submit" 
+                   class="slds-button slds-button--neutral"
+                   labelClass="label" press="{!c.createContact}"/> 
+    </div>    
+    
+    <div style="margin-top:-32px; margin-left:90px;">
+        <ui:button label="Cancel" 
+                   class="slds-button slds-button--neutral"
+                   labelClass="label" press="{!c.cancel}"/>
+    </div>    
+    <br/>
+    
+    <aura:attribute name="contacts" type="contact[]"/>
+    <div class="slds">
+        <table class="slds-table slds-table--bordered slds-table--striped">
+            <thead>
+                <tr>
+                    <th scope="col"><span class="slds-truncate">Account Id</span></th>
+                    <th scope="col"><span class="slds-truncate">First Name</span></th>
+                    <th scope="col"><span class="slds-truncate">Last Name</span></th>
+                </tr>
+            </thead>
+            <tbody>
+                <aura:iteration items="{!v.contacts}" var="con">
+                    <tr>
+                        <td>{!con.AccountId}</td>
+                        <td>{!con.FirstName}</td>
+                        <td>{!con.LastName}</td>
+                    </tr>
+                </aura:iteration>    
+            </tbody>
+        </table>
+    </div>
+</aura:component>

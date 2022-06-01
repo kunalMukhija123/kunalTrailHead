@@ -1,0 +1,87 @@
+<apex:page >
+
+        
+        <!--  ----------------------------------------------------------------------  -->
+    <!--  NOTE: Please add the following <META> element to your page <HEAD>.      -->
+    <!--  If necessary, please modify the charset parameter to specify the        -->
+    <!--  character set of your HTML page.                                        -->
+    <!--  ----------------------------------------------------------------------  -->
+    
+    <META HTTP-EQUIV="Content-type" CONTENT="text/html; charset=UTF-8"/>
+    
+    <!--  ----------------------------------------------------------------------  -->
+    <!--  NOTE: Please add the following <FORM> element to your page.             -->
+    <!--  ----------------------------------------------------------------------  -->
+    
+    <form action="https://www.salesforce.com/servlet/servlet.WebToLead?encoding=UTF-8" method="POST">
+    
+        <input type="hidden" name="oid" value="00D28000001OzUd"/>
+        <input type="hidden" name="retURL" value="http://www.salesforce.com"/>   
+    
+        <!--  ----------------------------------------------------------------------  -->
+        <!--  NOTE: These fields are optional debugging elements. Please uncomment    -->
+        <!--  these lines if you wish to test in debug mode.                          -->
+        <!--  <input type="hidden" name="debug" value=1>                              -->
+        <!--  <input type="hidden" name="debugEmail"                                  -->
+        <!--  value="kunalmukhija@gmail.com">                                         -->
+        <!--  ----------------------------------------------------------------------  -->
+    
+    <head>
+        <apex:stylesheet value="{!URLFOR($Resource.Lightning)}" />
+    </head>
+    
+    
+    <body>
+        <div class="slds-form-element">
+            <label class="slds-form-element__label" for="first_name">First Name</label>
+            <div class="slds-form-element__control">
+                <input id="first_name" maxlength="40" name="first_name" size="20" type="text" placeholder="Enter First Name" />
+            </div>
+        </div>
+        <p/>
+    
+        <div class="slds-form-element">
+            <label for="last_name">Last Name</label>
+            <div class="slds-form-element__control">
+                <input id="last_name" maxlength="80" name="last_name" size="20" type="text" placeholder="Enter Last Name" />
+                <p/>
+            </div>
+        </div>
+        <p/>
+    
+        <div class="slds-form-element">
+            <label for="email">Email</label>
+            <div class="slds-form-element__control">
+                <input id="email" maxlength="80" name="email" size="20" type="text" placeholder="Enter Email" />
+                <p/>
+            </div>
+        </div>
+        <p/>
+    
+        <div class="slds-form-element">
+            <label for="country">Country</label>
+            <div class="slds-form-element__control">
+                <input id="country" maxlength="80" name="country" size="20" type="text" placeholder="Enter Country" />
+                <p/>
+            </div>
+        </div>
+        <p/>
+    
+        <div class="slds-form-element">
+            <label for="country">City</label>
+            <div class="slds-form-element__control">
+                <div class="slds-select_container">
+                    <select id="select-01" class="slds-select" max-width="80">
+                        <option>Sirsa</option>
+                        <option>Hisar</option>
+                        <option>Gurgaon</option>
+                      </select>
+                </div>
+            </div>
+        </div>
+        <p/>
+    
+            <input type="submit" name="submit"/>   
+        </body>
+    </form>
+</apex:page>

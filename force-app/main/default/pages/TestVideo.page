@@ -1,0 +1,23 @@
+<apex:page standardController="Contact">
+<!-- 
+https://www.youtube.com/watch?v=yqn5TTuirdg
+https://www.youtube.com/embed/
+     <apex:iframe width="854" height="510" src="https://www.youtube.com/embed/yqn5TTuirdg" frameborder="0"/>  -->
+
+
+<video controls="true" >
+<source src="https://www.youtube.com/embed/yqn5TTuirdg"/>
+</video>
+
+<div class="embed-responsive embed-responsive-16by9">
+    <video controls="true" class="embed-responsive-item">
+      <source src="https://www.youtube.com/embed/yqn5TTuirdg"/>
+    </video>
+</div>
+<apex:pageblock >
+<apex:pageBlockSection rendered="true">
+    <apex:iframe width="854" height="510" src="https://www.youtube.com/embed/yqn5TTuirdg" frameborder="0"/>
+</apex:pageBlockSection>
+</apex:pageblock>
+
+</apex:page>

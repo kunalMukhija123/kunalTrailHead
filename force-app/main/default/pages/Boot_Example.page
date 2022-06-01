@@ -1,0 +1,166 @@
+<apex:page standardStylesheets="true" showHeader="false" sidebar="false">
+   <html>
+      <head>
+         <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet"/>
+         <link href='https://fonts.googleapis.com/css?family=Roboto:400,700italic' rel='stylesheet' type='text/css' />
+         <!-- Compiled and minified CSS -->
+         <!-- Latest compiled and minified CSS -->
+         <meta name="viewport" content="width=device-width, initial-scale=1,minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+         <style>
+         /* Code for Responsive Nature */
+        /* resets */
+             *,
+             *:before,
+             *:after {
+             box-sizing: border-box;
+             }
+               @import url(https://fonts.googleapis.com/css?family=Roboto:400,700italic);
+
+             .clearfix:after {
+             content: "";
+             display: table;
+             clear: both;
+             }
+             /* global */
+
+             .wrapper {
+             margin: 0 auto;
+             padding: 10px;
+             max-width: 100%;
+             background-color: #fff;
+             }
+             /* grid */
+
+             .row {
+             margin: 0 -10px;
+             margin-bottom: 20px;
+             }
+
+             .row:last-child {
+             margin-bottom: 0;
+             }
+
+             [class*="col-"] {
+             padding: 10px;
+             }
+
+             @media all and ( min-width: 100px) {
+             .col-2-3 {
+              float: left;
+              width: 66.66%;
+              background-color:#6fed9f;
+             }  
+             .col-1-1 {
+              text-align: center;
+              vertical-align: middle;
+              background-color: white;
+              width: 100%;
+              font-family: 'Roboto', sans-serif;
+              font-size: 10px;
+             }
+             .col-1-2 {
+              float: left;
+              width: 50%;
+              background-color: white;
+              
+             }
+             .col-1-3 {
+              float: left;
+              width: 33.33%;
+              background-color:#6fed9f;
+             }
+             .col-1-4 {
+              float: left;
+              width: 25%;
+              background-color:#6fed9f;
+             }
+             .col-1-8 {
+              float: left;
+              width: 12.5%;
+              background-color:#6fed9f;
+             }
+         
+             .message-box {
+             width: auto;
+             border-radius: 6px;
+             margin: 20px auto;
+             padding: auto 0;
+             position: relative;
+             }
+             .message-box i {
+             vertical-align: middle;
+             padding: 20px;
+             }
+             
+             .message-text {
+             vertical-align: middle;
+             font-family: 'Roboto', sans-serif;
+             font-size: 200%;
+             }
+             .message-box-info {
+             background-color: #CDE8F6;
+             border: #2697d1 2px solid;
+             color: #447EAF;
+             }
+             .message-box-warn {
+             background-color: #F8F4D5;
+             border: #e9dd7e 2px solid;
+             color: #96722E;
+             }
+             .message-box-error {
+             background-color: #ECC8C5;
+             border: #d37f78 2px solid;
+             color: black;
+             }
+             .message-box-success {
+             background-color: #DDF3D5;
+             border: #9ddc86 2px solid;
+             color: #597151;
+             }
+         </style>
+         
+      </head>
+      <body>
+        <div class="wrapper">
+          <div class="row clearfix">
+            <div class="col-1-1">
+              Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has
+              survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop
+              publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+            </div>
+            <div class="col-1-2">
+              1-2 Column Layout </div>
+            <div class="col-1-2">
+              2-2 Column Layout
+            </div>
+          </div>
+        </div>
+        <!-- /.wrapper -->
+        <div class="wrapper">
+          <div class="row clearfix">
+            <div class="message-box message-box-info">
+              <i class="fa fa-info-circle fa-2x"></i>
+              <span class="message-text"><strong>Info:</strong> User pending action</span>
+              <i class="fa fa-times fa-2x exit-button "></i>
+            </div>
+            <div class="message-box message-box-warn">
+              <i class="fa fa-warning fa-2x"></i>
+              <span class="message-text"><strong>Warning:</strong> User has to be admin</span>
+              <i class="fa fa-times fa-2x exit-button "></i>
+            </div>
+            <div class="message-box message-box-error">
+              <i class="fa fa-ban fa-2x"></i>
+              <span class="message-text"><strong>Error:</strong> Internal Server Error</span>
+              <i class="fa fa-times fa-2x exit-button "></i>
+            </div>
+            <div class="message-box message-box-success">
+              <i class="fa fa-check fa-2x"></i>
+              <span class="message-text"><strong>Success:</strong> Updated member status</span>
+              <i class="fa fa-times fa-2x exit-button "></i>
+            </div>
+          </div>
+        </div>
+        <!-- /.wrapper -->
+      </body>
+   </html>
+</apex:page>

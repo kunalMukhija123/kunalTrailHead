@@ -1,0 +1,24 @@
+<apex:page controller="passingLookupIdController">
+   <script>
+    function doSomething(test) {
+       
+        alert('hi'+test);
+        PassingParameter1(test);
+        // lkfield.value now has the selected ID value
+    }
+    </script>    
+     
+ <apex:form >
+  <apex:actionFunction name="PassingParameter1" action="{!PassingParameter}" reRender="field1">
+  <apex:param value="" name="recordId"/>
+  </apex:actionFunction>
+   <apex:pageBlock >
+          <apex:pageBlockSection id="someArea"> 
+               <apex:inputField value="{!con.AccountId}" id="field">
+                  <apex:actionSupport event="onchange" reRender="field" oncomplete="doSomething('{!con.AccountId}');"/>
+              </apex:inputField>
+          <!--     <apex:inputField value="{!account.Industry}" id="field1" />   --->
+          </apex:pageBlockSection>
+      </apex:pageBlock>
+  </apex:form>
+</apex:page>

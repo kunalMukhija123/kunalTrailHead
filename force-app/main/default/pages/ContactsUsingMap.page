@@ -1,0 +1,52 @@
+<apex:page controller="AccountContactMap" title="Test" id="pageId">
+<apex:form id="formId">
+
+<!--    <apex:actionFunction name="refreshPage"  status="counterStatus"/>
+        <apex:actionstatus id="counterStatus">
+        <apex:facet name="start">
+            <div class="waitingSearchDiv" id="el_loading" style="background-color: #fbfbfb; height:100%;opacity:0.65;width:100%;">
+                <div class="waitingHolder" style="top: 100px; width: 91px;">
+                <img class="waitingImage" src="/img/loading.gif" title="Please Wait..." />
+                <span class="waitingDescription">Loading...</span>
+                </div>
+            </div>
+        </apex:facet>
+    </apex:actionstatus>  -->
+
+
+ <apex:pageBlock title="All Contacts" tabStyle="contact" id="pageBlockId">
+        <apex:pageBlockTable value="{!listCon}" var="key" id="pbtId">
+        <apex:column >
+              <apex:facet name="header" > 
+                       <apex:inputCheckbox />
+              </apex:facet>
+              <apex:inputCheckbox onclick="refreshpage()" />
+            <!--  <apex:inputCheckbox value="{!cw.isSelected}" onClick="refreshPage();"/> -->
+        </apex:column>
+        
+       <!--     <apex:column headerValue="Contact ID" value="{!Map1[key.id]}"/><br/>
+       
+                 <apex:column headerValue="Contact ID">
+                 <apex:outputField value="{!Map1[key.id]}" rendered="{!![key].isSelected}"/>
+                 <apex:inputField value="{!Map1[key.id]}"  rendered="{![key].isSelected}"/>
+            
+            </apex:column>  -->
+           <apex:column headerValue="First Name">
+                <apex:outputField value="{!Map1[key.id].FirstName}" /> 
+                <apex:inputField value="{!Map1[key.id].FirstName}" /> 
+           </apex:column>
+            
+            
+     <!--       <apex:column headerValue="First Name" value="{!Map1[key.id].FirstName}" /><br/>  -->
+            <apex:column headerValue="Last Name" value="{!Map1[key.id].LastName}"/><br/>
+            <apex:column headerValue="Email" value="{!Map1[key.id].Email}"/><br/>      
+        </apex:pageblocktable>
+        
+        <apex:pageblockButtons >
+            <apex:commandButton value="UPDATE"/>
+            <apex:commandButton value="DELETE"/>
+        </apex:pageblockButtons>
+    </apex:pageBlock>
+    
+</apex:form>    
+</apex:page>

@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Network xmlns="http://soap.sforce.com/2006/04/metadata">
+    <allowInternalUserLogin>true</allowInternalUserLogin>
+    <allowMembersToFlag>false</allowMembersToFlag>
+    <changePasswordTemplate>unfiled$public/CommunityChangePasswordEmailTemplate</changePasswordTemplate>
+    <communityRoles/>
+    <disableReputationRecordConversations>true</disableReputationRecordConversations>
+    <emailSenderAddress>kunalmukhija@gmail.com</emailSenderAddress>
+    <emailSenderName>Portal Community</emailSenderName>
+    <enableCustomVFErrorPageOverrides>false</enableCustomVFErrorPageOverrides>
+    <enableDirectMessages>false</enableDirectMessages>
+    <enableExperienceBundleBasedSnaOverrideEnabled>false</enableExperienceBundleBasedSnaOverrideEnabled>
+    <enableGuestChatter>false</enableGuestChatter>
+    <enableGuestFileAccess>false</enableGuestFileAccess>
+    <enableGuestMemberVisibility>false</enableGuestMemberVisibility>
+    <enableInvitation>false</enableInvitation>
+    <enableKnowledgeable>false</enableKnowledgeable>
+    <enableMemberVisibility>true</enableMemberVisibility>
+    <enableNicknameDisplay>false</enableNicknameDisplay>
+    <enablePrivateMessages>false</enablePrivateMessages>
+    <enableReputation>false</enableReputation>
+    <enableShowAllNetworkSettings>false</enableShowAllNetworkSettings>
+    <enableSiteAsContainer>false</enableSiteAsContainer>
+    <enableTalkingAboutStats>true</enableTalkingAboutStats>
+    <enableTopicAssignmentRules>false</enableTopicAssignmentRules>
+    <enableTopicSuggestions>true</enableTopicSuggestions>
+    <enableUpDownVote>false</enableUpDownVote>
+    <forgotPasswordTemplate>unfiled$public/CommunityForgotPasswordEmailTemplate</forgotPasswordTemplate>
+    <gatherCustomerSentimentData>false</gatherCustomerSentimentData>
+    <networkMemberGroups>
+        <permissionSet>Hiring_Manager</permissionSet>
+        <permissionSet>Account_Rating</permissionSet>
+        <profile>Admin</profile>
+        <profile>Inside Sales Rep</profile>
+        <profile>Account Reviewer</profile>
+        <profile>Basic Account User</profile>
+        <profile>Chatter Free User</profile>
+        <profile>Analytics Cloud Integration User</profile>
+        <profile>Analytics Cloud Security User</profile>
+        <profile>StandardAul</profile>
+        <profile>Customer Community Login User</profile>
+        <profile>Cross Org Data Proxy User</profile>
+        <profile>PlatformPortal</profile>
+        <profile>Work%2Ecom Only User</profile>
+        <profile>Customer Portal Manager Custom</profile>
+        <profile>Identity User</profile>
+        <profile>Customer Community Plus User</profile>
+        <profile>Silver Partner User</profile>
+        <profile>HighVolumePortal</profile>
+        <profile>Gold Partner User</profile>
+        <profile>Customer Portal Manager Standard</profile>
+        <profile>Force%2Ecom - App Subscription User</profile>
+        <profile>Customer Community Plus Login User</profile>
+        <profile>Partner App Subscription User</profile>
+        <profile>External Identity User</profile>
+        <profile>Partner Community User</profile>
+        <profile>Partner Community Login User</profile>
+        <profile>Customer Community User</profile>
+        <profile>Force%2Ecom - Free User</profile>
+        <profile>Chatter Moderator User</profile>
+        <profile>High Volume Customer Portal User</profile>
+        <profile>Authenticated Website</profile>
+        <profile>SolutionManager</profile>
+        <profile>Read Only</profile>
+        <profile>Custom%3A Sales Profile</profile>
+        <profile>Custom%3A Marketing Profile</profile>
+        <profile>Custom%3A Support Profile</profile>
+        <profile>MarketingProfile</profile>
+        <profile>ContractManager</profile>
+        <profile>Standard</profile>
+        <profile>test1</profile>
+        <profile>Recruiter</profile>
+        <profile>Standard Employee</profile>
+    </networkMemberGroups>
+    <networkPageOverrides>
+        <changePasswordPageOverrideSetting>Standard</changePasswordPageOverrideSetting>
+        <forgotPasswordPageOverrideSetting>Standard</forgotPasswordPageOverrideSetting>
+        <homePageOverrideSetting>Standard</homePageOverrideSetting>
+        <loginPageOverrideSetting>Standard</loginPageOverrideSetting>
+        <selfRegProfilePageOverrideSetting>Standard</selfRegProfilePageOverrideSetting>
+    </networkPageOverrides>
+    <picassoSite>Portal_Community1</picassoSite>
+    <selfRegProfile>Customer Community Login User</selfRegProfile>
+    <selfRegistration>true</selfRegistration>
+    <sendWelcomeEmail>true</sendWelcomeEmail>
+    <site>Portal_Community</site>
+    <status>Live</status>
+    <tabs>
+        <customTab>Billing__c</customTab>
+        <customTab>Booking__c</customTab>
+        <customTab>Book__c</customTab>
+        <customTab>Candidate__c</customTab>
+        <customTab>Candidates__c</customTab>
+        <customTab>Cloud__c</customTab>
+        <customTab>Customer_Project__c</customTab>
+        <customTab>Customerr__c</customTab>
+        <customTab>Customer__c</customTab>
+        <customTab>Employment_Website__c</customTab>
+        <customTab>MESSENGER__Extend_Message_Limit</customTab>
+        <customTab>MESSENGER__Generate_Code</customTab>
+        <customTab>Invoice_Statement__c</customTab>
+        <customTab>Job_Application__c</customTab>
+        <customTab>Lt</customTab>
+        <customTab>MY_PROJECT__c</customTab>
+        <customTab>Member__c</customTab>
+        <customTab>Merchandise__c</customTab>
+        <customTab>MESSENGER__Message_Config__c</customTab>
+        <customTab>New_Object__c</customTab>
+        <customTab>PROJECTS__c</customTab>
+        <customTab>PROJECT_TASK__c</customTab>
+        <customTab>Room__c</customTab>
+        <customTab>MESSENGER__Send_New_Message</customTab>
+        <customTab>Staging__c</customTab>
+        <customTab>Test__c</customTab>
+        <customTab>MESSENGER__Tourenplan</customTab>
+        <customTab>VF_Tab_1</customTab>
+        <customTab>Vehicle__c</customTab>
+        <customTab>position__c</customTab>
+        <customTab>web_tab_1</customTab>
+        <defaultTab>Chatter</defaultTab>
+        <standardTab>Chatter</standardTab>
+        <standardTab>Account</standardTab>
+        <standardTab>AppLauncher</standardTab>
+        <standardTab>Asset</standardTab>
+        <standardTab>Campaign</standardTab>
+        <standardTab>Case</standardTab>
+        <standardTab>Coaching</standardTab>
+        <standardTab>Console</standardTab>
+        <standardTab>Contact</standardTab>
+        <standardTab>ContentSearch</standardTab>
+        <standardTab>Contract</standardTab>
+        <standardTab>DandBCompany</standardTab>
+        <standardTab>Dashboard</standardTab>
+        <standardTab>JigsawSearch</standardTab>
+        <standardTab>DuplicateRecordSet</standardTab>
+        <standardTab>WorkFeedbackRequest</standardTab>
+        <standardTab>File</standardTab>
+        <standardTab>GoalV2</standardTab>
+        <standardTab>CollaborationGroup</standardTab>
+        <standardTab>home</standardTab>
+        <standardTab>Idea</standardTab>
+        <standardTab>Lead</standardTab>
+        <standardTab>Workspace</standardTab>
+        <standardTab>Macro</standardTab>
+        <standardTab>Metric</standardTab>
+        <standardTab>Opportunity</standardTab>
+        <standardTab>Order</standardTab>
+        <standardTab>OtherUserProfile</standardTab>
+        <standardTab>WorkPerformanceCycle</standardTab>
+        <standardTab>Pricebook2</standardTab>
+        <standardTab>Product2</standardTab>
+        <standardTab>UserProfile</standardTab>
+        <standardTab>ProfilePlatformCoaching</standardTab>
+        <standardTab>ProfilePlatformFeed</standardTab>
+        <standardTab>ProfilePlatformFeedback</standardTab>
+        <standardTab>ProfilePlatformGoals</standardTab>
+        <standardTab>ProfilePlatformOverview</standardTab>
+        <standardTab>report</standardTab>
+        <standardTab>Sites</standardTab>
+        <standardTab>Solution</standardTab>
+        <standardTab>StreamingChannel</standardTab>
+        <standardTab>ContentSubscriptions</standardTab>
+        <standardTab>UserProvisioningRequest</standardTab>
+    </tabs>
+    <welcomeTemplate>unfiled$public/CommunityWelcomeEmailTemplate</welcomeTemplate>
+</Network>

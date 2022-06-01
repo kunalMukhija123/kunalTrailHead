@@ -1,0 +1,12 @@
+<apex:page controller="AccountDisplay">
+    <apex:form >
+        <apex:pageBlock title="Display Account Details">
+            <apex:outputText value="Select Account: " />
+            <apex:inputField value="{!con.accountid}"/>
+            <apex:commandButton action="{!getdetails}" value="Submit" />
+            <apex:pageBlockSection title="Account Details">
+                <apex:outputtext value="{!acc.name}" />
+            </apex:pageBlockSection>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

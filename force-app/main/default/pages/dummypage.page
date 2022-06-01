@@ -1,0 +1,594 @@
+<apex:page controller="SaveDataFromPage" standardStylesheets="false" >
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
+    <html lang="en"  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+        <apex:stylesheet value="{!URLFOR($Resource.SLDS, 'assets/styles/salesforce-lightning-design-system.min.css')}" />
+        
+        
+        
+        <head>   
+            <script type="text/javascript">
+            
+            
+            function ValidateLettersWithSpaceOnly(evt) {
+                evt = (evt) ? evt : event;
+                var charCode = (evt.charCode) ? evt.charCode : ((evt.keyCode) ? evt.keyCode : ((evt.which) ? evt.which : 0));
+                
+                
+                if(charCode > 32 && (charCode < 65 || charCode > 90) && (charCode < 97 || charCode > 122))
+                {
+                    return false;
+                }
+                return true;    
+            };
+            
+            window.onload = function(){
+            
+                
+                
+                function validateEmail(emailField)
+                {
+                    if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(emailField))  
+                    {  
+                        return (true)  
+                    }  
+                    alert("You have entered an invalid email address!")  
+                    return (false)
+                };
+                
+                document.getElementById("pg-blk1-btn").onclick = function () {
+                    var div2=document.getElementById("btn-1");
+                    var divbtn2=document.getElementById("btn1");
+                    var x = document.getElementById("con-Name").value;
+                    debugger;
+                    if (x == "") {
+                        document.getElementById('con-Name').style.border="1px solid red";
+                        document.getElementById('span1').style.display="";
+                        div2.classList.remove("slds-is-active");       
+                        
+                        alert("Name must be filled out ");
+                        return false;
+                    }
+                    else{
+                        document.getElementById('span1').style.display="None";
+                    }
+                    
+                    var x1 = document.getElementById("conFst-Name").value;
+                    if (x1 == "") {
+                        document.getElementById('conFst-Name').style.border="1px solid red";
+                        document.getElementById('span1').style.display="";
+                        div2.classList.remove("slds-is-active");       
+                        alert("First Name must be filled out");
+                        return false;
+                    }else{
+                        document.getElementById('span1').style.display="None";
+                    }
+                    
+                    var x2= document.getElementById("conLst-Name").value;
+                    if (x2 == "") {
+                        document.getElementById('conLst-Name').style.border="1px solid red";
+                        document.getElementById('span1').style.display="";
+                        div2.classList.remove("slds-is-active");       
+                        alert("Last Name must be filled out");
+                        return false;
+                    }else{
+                        document.getElementById('span1').style.display="None";
+                    }
+                    
+                    var x3 = document.getElementById("con-Email").value;
+                    if (x3 == "") {
+                        document.getElementById('con-Email').style.border="1px solid red";
+                        document.getElementById('span1').style.display="";
+                        div2.classList.remove("slds-is-active");       
+                        alert("Email must be filled out");
+                        return false;
+                    }else{
+                        var a = validateEmail(document.getElementById("con-Email").value);
+                        if(a == false )
+                        {
+                            document.getElementById('con-Email').style.border="1px solid red";
+                            return false;
+                        }
+                        else{
+                            document.getElementById('span1').style.display="None";
+                        }
+                    }
+                    
+                    div2.classList.remove("slds-is-active");
+                    div2.classList.add("slds-is-completed");
+                    
+                    var divbtn2=document.getElementById("btn1");
+                    divbtn2.classList.add("slds-button_icon", "slds-button_icon", "slds-progress__marker_icon");
+                    
+                    
+                    var div = document.createElement('i');
+                    //div.className = 'row';
+                    div.setAttribute("aria-hidden",true);
+                    div.setAttribute("id","iconcheck");
+                    div.style.marginLeft = "-2px";
+                    div.style.marginTop = "-2px";
+                    
+                    div.classList.add("fa","fa-1x","fa-check");
+                    //div.innerHTML = '<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#success"></use>';
+                    divbtn2.appendChild(div);
+                    //div.innerHTML = '<i class="fa fa-check"></i>';
+                    
+                    var div3=document.getElementById("btn2");
+                    div3.classList.add("slds-is-active");
+                    
+                    var div3=document.getElementById("btn-1");
+                    div3.classList.remove("slds-is-completed");
+                    
+                    
+                    var progresschange = document.getElementById('progressbar');
+                    progresschange.setAttribute("aria-valuenow",25);
+                    
+                    document.getElementById('spanwidth').style.width="33%";
+                    document.getElementById('pg-Blk1').style.display="None";
+                    document.getElementById('pg-Blk2').style.display="block";
+                  //  document.getElementById('step1tooltip').style.display="";
+                } 
+                
+                document.getElementById("pg-blk2-btn2").onclick = function () {
+                    var div4 = document.getElementById("btn2");
+                    
+                    var x = document.getElementById("con1-Phone").value;
+                    if (x == "") {
+                        document.getElementById('con1-Phone').style.border="1px solid red";
+                        document.getElementById('span2').style.display="";
+                        div4.classList.remove("slds-is-active");       
+                        alert("Phone must be filled out");
+                        return false;
+                    }else{
+                        //validatePhone(document.getElementById("con1-Phone").value);
+                        document.getElementById('span2').style.display="None";
+                    }
+                    
+                    var x1 = document.getElementById("conFst1-Mob").value;
+                    if (x1 == "") {
+                        document.getElementById('conFst1-Mob').style.border="1px solid red";
+                        document.getElementById('span2').style.display="";
+                        div4.classList.remove("slds-is-active");       
+                        alert("Mobile Number must be filled out");
+                        return false;
+                    }else{
+                        document.getElementById('span2').style.display="None";
+                    }
+                    
+                    var x2= document.getElementById("conLst1-Fax").value;
+                    if (x2 == "") {
+                        document.getElementById('conLst1-Fax').style.border="1px solid red";
+                        document.getElementById('span2').style.display="";
+                        div4.classList.remove("slds-is-active");       
+                        alert("Fax must be filled out");
+                        return false;
+                    }else{
+                        document.getElementById('span2').style.display="None";
+                    }
+                    
+                    var x3 = document.getElementById("con1-Add").value;
+                    if (x3 == "") {
+                        document.getElementById('con1-Add').style.border="1px solid red";
+                        document.getElementById('span2').style.display="";
+                        div4.classList.remove("slds-is-active");       
+                        alert("Address must be filled out");
+                        return false;
+                    }else{
+                        document.getElementById('span2').style.display="None";
+                    }
+                    
+                    div4.classList.remove("slds-is-active");
+                    div4.classList.add("slds-is-completed");
+                    
+                    var divbtn3=document.getElementById("btn-2");
+                    divbtn3.classList.add("slds-button_icon", "slds-button_icon", "slds-progress__marker_icon");
+                    
+                    
+                    var div = document.createElement('i');
+                    //div.className = 'row';
+                    div.setAttribute("aria-hidden",true);
+                    div.setAttribute("id","iconcheck1");
+                    div.style.marginLeft = "-2px";
+                    div.style.marginTop = "-2px";
+                    
+                    div.classList.add("fa","fa-1x","fa-check");
+                    //div.innerHTML = '<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#success"></use>';
+                    divbtn3.appendChild(div);
+                    //div.innerHTML = '<i class="fa fa-check"></i>';
+                    
+                    var div3=document.getElementById("btn3");
+                    div3.classList.add("slds-is-active");
+                    
+                    var div3=document.getElementById("btn2");
+                    div3.classList.remove("slds-is-completed");
+                    
+                    var progresschange = document.getElementById('progressbar');
+                    progresschange.setAttribute("aria-valuenow",50);
+                    
+                    document.getElementById('spanwidth').style.width="64%";
+                    document.getElementById('pg-Blk2').style.display="None";
+                    document.getElementById('pg-Blk3').style.display="block";
+                    //alert("jjfgd"); 
+                }
+                
+                document.getElementById("pg-blk3-btn2").onclick = function () {
+                    var div6 = document.getElementById("btn3");
+                    
+                    var x = document.getElementById("con2-birDat").value;
+                    if (x == "") {
+                        document.getElementById('con2-birDat').style.border="1px solid red";
+                        document.getElementById('span3').style.display="";
+                        div6.classList.remove("slds-is-active");       
+                        alert("Birth Date must be filled out");
+                        return false;
+                    }else{
+                        document.getElementById('span3').style.display="None";
+                    }
+                    
+                    var x1 = document.getElementById("conFst2-ConOwner").value;
+                    if (x1 == "") {
+                        document.getElementById('conFst2-ConOwner').style.border="1px solid red";
+                        document.getElementById('span3').style.display="";
+                        div6.classList.remove("slds-is-active");       
+                        alert("Contact Owner must be filled out");
+                        return false;
+                    }else{
+                        document.getElementById('span3').style.display="None";
+                    }
+                    
+                    var x2= document.getElementById("conLst2-DepMent").value;
+                    if (x2 == "") {
+                        document.getElementById('conLst2-DepMent').style.border="1px solid red";
+                        document.getElementById('span3').style.display="";
+                        div6.classList.remove("slds-is-active");       
+                        alert("Department must be filled out");
+                        return false;
+                    }else{
+                        document.getElementById('span3').style.display="None";
+                    }
+                    
+                    var x3 = document.getElementById("con2-DesCre").value;
+                    if (x3 == "") {
+                        document.getElementById('con2-DesCre').style.border="1px solid red";
+                        document.getElementById('span3').style.display="";
+                        div6.classList.remove("slds-is-active");       
+                        alert("Description must be filled out");
+                        return false;
+                    }else{
+                        document.getElementById('span3').style.display="None";
+                    }
+                    
+                    
+                    div6.classList.remove("slds-is-active");
+                    div6.classList.add("slds-is-completed");
+                    
+                    var divbtn7=document.getElementById("btn-3");
+                    divbtn7.classList.add("slds-button_icon", "slds-button_icon", "slds-progress__marker_icon");
+                    
+                    var div = document.createElement('i');
+                    //div.className = 'row';
+                    div.setAttribute("aria-hidden",true);
+                    div.setAttribute("id","iconcheck2");
+                    div.style.marginLeft = "-2px";
+                    div.style.marginTop = "-2px";
+                    
+                    div.classList.add("fa","fa-1x","fa-check");
+                    //div.innerHTML = '<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#success"></use>';
+                    var val = document.getElementById("iconcheck2");
+                    if(val == undefined || val == null){
+                        divbtn7.appendChild(div);
+                    }
+                    
+                    //div.innerHTML = '<i class="fa fa-check"></i>';
+                    
+                    
+                    var div7=document.getElementById("btn4");
+                    div7.classList.add("slds-is-active");
+                    
+                    var div8=document.getElementById("btn3");
+                    div8.classList.remove("slds-is-completed");
+                    
+                    var progresschange = document.getElementById('progressbar');
+                    progresschange.setAttribute("aria-valuenow",100);
+                    
+                    document.getElementById('spanwidth').style.width="100%";
+                    document.getElementById('pg-Blk2').style.display="None";
+                    document.getElementById('pg-Blk3').style.display="block";
+                    //alert("Registration is done"); 
+                    
+                    var div7 = document.getElementById("btn4");
+                    
+                    div7.classList.remove("slds-is-active");
+                    div7.classList.add("slds-is-completed");
+                    
+                    var divbtn8=document.getElementById("btn-4");
+                    divbtn8.classList.add("slds-button_icon", "slds-button_icon", "slds-progress__marker_icon");
+                    
+                    var div = document.createElement('i');
+                    //div.className = 'row';
+                    div.setAttribute("aria-hidden",true);
+                    div.setAttribute("id","iconcheck3");
+                    div.style.marginLeft = "-2px";
+                    div.style.marginTop = "-2px";
+                    
+                    div.classList.add("fa","fa-1x","fa-check");
+                    //div.innerHTML = '<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#success"></use>';
+                    debugger;
+                    var val = document.getElementById("iconcheck3");
+                    if(val == undefined || val == null){
+                        divbtn8.appendChild(div);
+                    }
+                    //div.innerHTML = '<i class="fa fa-check"></i>';
+                    
+                    var div8=document.getElementById("btn4");
+                    div8.classList.remove("slds-is-completed");
+                    
+                }
+                
+                document.getElementById("pg-blk2-btn1").onclick = function () {
+                    
+                    var progresschange = document.getElementById('progressbar');
+                    progresschange.setAttribute("aria-valuenow",50);
+                    
+                    document.getElementById('spanwidth').style.width="0%";
+                    document.getElementById('pg-Blk2').style.display="None";
+                    document.getElementById('pg-Blk1').style.display="block";
+                    var div11 = document.getElementById("btn2");
+                    div11.classList.remove("slds-is-active");
+                    
+                    document.getElementById('span2').style.display="None";
+                    
+                    var div10 = document.getElementById("iconcheck");
+                    div10.parentNode.removeChild(div10 );
+                    
+                    var div12 = document.getElementById("btn-1");
+                    div12.classList.add("slds-is-active");
+                    
+                }
+                
+                document.getElementById("pg-blk3-btn1").onclick = function () {
+                    
+                    var progresschange = document.getElementById('progressbar');
+                    progresschange.setAttribute("aria-valuenow",50);
+                    
+                    document.getElementById('spanwidth').style.width="33%";
+                    document.getElementById('pg-Blk3').style.display="None";
+                    document.getElementById('pg-Blk2').style.display="block";
+                    var div11 = document.getElementById("btn3");
+                    div11.classList.remove("slds-is-active");
+                    document.getElementById('span3').style.display="None";
+                    
+                    
+                    var div13 = document.getElementById("iconcheck1");
+                    div13.parentNode.removeChild(div13 );
+                    
+                    var div12 = document.getElementById("btn2");
+                    div12.classList.add("slds-is-active");
+                    
+                    var div10 = document.getElementById("iconcheck3");
+                    div10.parentNode.removeChild(div10 );
+                    
+                    var div11 = document.getElementById("iconcheck2");
+                    div11.parentNode.removeChild(div11 );
+                    
+                }
+            } 
+            
+            </script>
+            
+            <script>
+               function SaveMethod(){
+                 controllerAction();// this call the action function
+               }
+            </script>
+        </head>
+        
+        <apex:form id="frm-Info">
+            <apex:stylesheet value="{!URLFOR($Resource.Lightning, 'assets/styles/salesforce-lightning-design-system.css')}" />  
+            <apex:actionFunction name="controllerAction" action="{! saveRec }" reRender="fm"/>
+
+            <div class="demo-only" style="background:#f4f6f9; padding:1rem;">
+                <div class="slds-progress slds-progress_shade" id="progress">
+                    <ol class="slds-progress__list" id="progress-message">
+                        <li class="slds-progress__item slds-is-active" id="btn-1">
+                            <!--   <button class="slds-button slds-progress__marker" title="Step 1 - Completed">
+<span class="slds-assistive-text">Step 1 - Active</span>
+</button>   -->
+                            <a class="slds-button slds-progress__marker" id="btn1" title="Step 1" style="margin-left: -22px;" aria-describedby="step1tooltip">
+                                <span class="slds-assistive-text">Step 1 - Active</span>
+                                <span class="slds-icon_container slds-icon-utility-announcement" title="Description of icon when needed">
+                                    <svg class="slds-icon slds-icon-text-default slds-icon_xx-small" aria-hidden="true" id="span1"  style="height:15px;width:15px; fill: #c23934; display:None">
+                                        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="{!URLFOR($Resource.SLDS,'/assets/icons/utility-sprite/svg/symbols.svg#warning')}"></use>
+                                    </svg>
+                                    <span class="slds-assistive-text">Description of icon</span>
+                                </span>    
+                                
+                            </a>
+                        </li>
+                        
+                        <li class="slds-progress__item" id="btn2">
+                            <!--    <button class="slds-button slds-progress__marker" id="btn-2">
+<span class="slds-assistive-text">Step 2 </span>
+</button>    -->
+                            <a class="slds-button slds-progress__marker" id="btn-2" title="Step 2" style="margin-left: -4px;">
+                                <span class="slds-assistive-text">Step 2 </span>
+                                <span class="slds-icon_container slds-icon-utility-announcement" title="Description of icon when needed">
+                                    <svg class="slds-icon slds-icon-text-default slds-icon_xx-small" aria-hidden="true" id="span2" style="height:15px;width:15px; fill: #c23934; display:None">
+                                        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="{!URLFOR($Resource.SLDS,'/assets/icons/utility-sprite/svg/symbols.svg#warning')}"></use>
+                                    </svg>
+                                    <span class="slds-assistive-text">Description of icon</span>
+                                </span>
+                            </a>
+                        </li>
+                        <li class="slds-progress__item" id="btn3">
+                            <!--    <button class="slds-button slds-progress__marker" id="btn-3">
+<span class="slds-assistive-text">Step 3 </span>
+</button>     -->
+                            <a class="slds-button slds-progress__marker" id="btn-3" title="Step 3" style="margin-left: -9px;" aria-describedby="step3tooltip">
+                                <span class="slds-assistive-text">Step 3 </span>
+                                <span class="slds-icon_container slds-icon-utility-announcement" title="Description of icon when needed">
+                                    <svg class="slds-icon slds-icon-text-default slds-icon_xx-small" aria-hidden="true" id="span3" style="height:15px;width:15px; fill: #c23934; display:None">
+                                        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="{!URLFOR($Resource.SLDS,'/assets/icons/utility-sprite/svg/symbols.svg#warning')}"></use>
+                                    </svg>
+                                    <span class="slds-assistive-text">Description of icon</span>
+                                </span>
+                            </a>
+                        </li>
+                        <li class="slds-progress__item" id="btn4">
+                            <button class="slds-button slds-progress__marker" id="btn-4">
+                                <span class="slds-assistive-text">Step 4 </span>
+                            </button>
+                        </li>
+            <!--        <li class="slds-progress__item">
+                        <button class="slds-button slds-progress__marker" id="btn-5">
+                        <span class="slds-assistive-text">Step 5 </span>
+                        </button>
+                        </li>       -->
+                    </ol>
+                    <div class="slds-progress-bar slds-progress-bar_x-small" aria-valuemin="0" id="progressbar" aria-valuemax="100" aria-valuenow="0" role="progressbar">
+                        <span class="slds-progress-bar__value" style="width:0%;" id="spanwidth">
+                            <span class="slds-assistive-text">Progress: 0%</span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="slds-section-title--divider slds-text-heading--Medium">
+                <h1>Contact Data</h1>
+            </div>
+            
+            <apex:pageBlock >
+                <div id = "pg-Blk1" class="slds-section__title">
+                    <apex:pageblockSection title="First Page">
+                        <div class="slds-form-element" >
+                            <label class="slds-form-element__label" for="con-Name">Name</label>
+                            <div class="slds-form-element__control">
+                                <input type="text" id="con-Name" class="slds-input" name="fname" onkeypress="return ValidateLettersWithSpaceOnly(event);"/>
+                            </div>
+                        </div>
+                        
+                        <div class="slds-form-element">
+                            <label class="slds-form-element__label" for="conFst-Name">First Name</label>
+                            <div class="slds-form-element__control">
+                                <input type="text" id="conFst-Name" class="slds-input" onkeypress="return ValidateLettersWithSpaceOnly(event);"/>
+                            </div>
+                        </div>
+                        
+                        <div class="slds-form-element">
+                            <label class="slds-form-element__label" for="conLst-Name">Last Name</label>
+                            <div class="slds-form-element__control">
+                                <input type="text" id="conLst-Name" class="slds-input" value="{!lastName}" onkeypress="return ValidateLettersWithSpaceOnly(event);"/>
+                            </div>
+                        </div>
+                        
+                        
+                        <div class="slds-form-element">
+                            <label class="slds-form-element__label" for="con-Email">Email</label>
+                            <div class="slds-form-element__control">
+                                <input type="text" id="con-Email" class="slds-input" />
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <a Class="slds-button slds-button--neutral slds-not-selected" id="pg-blk1-btn" style="margin:10px;cursor:pointer ; " > Next </a>      
+                        </div>
+                    </apex:pageblockSection>
+                </div>
+                
+                <div style = "display : None;" id = "pg-Blk2" class="slds-section__title">
+                    <apex:pageblockSection title="Second Page">
+                        
+                        <div class="slds-form-element">
+                            <label class="slds-form-element__label" for="con1-Phone">Phone</label>
+                            <div class="slds-form-element__control">
+                                <input type="text" id="con1-Phone" class="slds-input"/>
+                            </div>
+                        </div>
+                        
+                        <div class="slds-form-element">
+                            <label class="slds-form-element__label" for="conFst1-Mob">Mobile</label>
+                            <div class="slds-form-element__control">
+                                <input type="text" id="conFst1-Mob" class="slds-input" />
+                            </div>
+                        </div>
+                        
+                        <div class="slds-form-element">
+                            <label class="slds-form-element__label" for="conLst1-Fax">Fax</label>
+                            
+                            <div class="slds-form-element__control">
+                                <input type="text" id="conLst1-Fax" class="slds-input" />
+                            </div>
+                        </div>
+                        
+                        <div class="slds-form-element">
+                            <label class="slds-form-element__label" for="con1-Add">Address</label>
+                            <div class="slds-form-element__control">
+                                <input type="text" id="con1-Add" class="slds-input" />
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <a Class="slds-button slds-button--neutral slds-not-selected" id="pg-blk2-btn1" style="margin:10px;cursor:pointer ; " > Previous </a>
+                            <a Class="slds-button slds-button--neutral slds-not-selected" id="pg-blk2-btn2" style="margin:10px;cursor:pointer ; " > Next </a>
+                        </div>
+                        
+                    </apex:pageblockSection>
+                </div>
+                
+                <!--       <span class="slds-icon_container slds-icon-utility-announcement" title="Description of icon when needed">
+<svg class="slds-icon slds-icon-text-default slds-icon_xx-small" aria-hidden="true">
+<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="{!URLFOR($Resource.SLDS,'/assets/icons/utility-sprite/svg/symbols.svg#warning')}"></use>
+</svg>
+<span class="slds-assistive-text">Description of icon</span>
+</span>        -->
+                
+                <div style = "display : None;" id = "pg-Blk3" class="slds-section__title">
+                    <apex:pageblockSection title="Third Page">
+                        <div class="slds-form-element">
+                            <label class="slds-form-element__label" for="con2-birDat">Birthdate</label>
+                            <div class="slds-form-element__control">
+                                <input type="text" id="con2-birDat" class="slds-input" />
+                            </div>
+                        </div>
+                        
+                        <div class="slds-form-element">
+                            <label class="slds-form-element__label" for="conFst2-ConOwner">contact owner</label>
+                            <div class="slds-form-element__control">
+                                <input type="text" id="conFst2-ConOwner" class="slds-input" />
+                            </div>
+                        </div>
+                        
+                        <div class="slds-form-element">
+                            <label class="slds-form-element__label" for="conLst2-DepMent">Department</label>
+                            <div class="slds-form-element__control">
+                                <input type="text" id="conLst2-DepMent" class="slds-input" />
+                            </div>
+                        </div>
+                        
+                        <div class="slds-form-element">
+                            <label class="slds-form-element__label" for="con2-DesCre">Description</label>
+                            <div class="slds-form-element__control">
+                                <input type="text" id="con2-DesCre" class="slds-input" />
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <a Class="slds-button slds-button--neutral slds-not-selected" id="pg-blk3-btn1" style="margin:10px;cursor:pointer ; " > Previous </a>
+                            <div onclick="SaveMethod();">
+                            <a Class="slds-button slds-button--neutral slds-not-selected" id="pg-blk3-btn2" style="margin:10px;cursor:pointer ; " > Save </a>
+                            </div>
+                             <apex:commandButton action="{!saveRec}" value="Save"/>     
+                            
+                        </div>
+                        
+                        <div class="slds-popover slds-popover_tooltip slds-nubbin_bottom" role="tooltip" id="step3tooltip" style="position:absolute;top:0px;left:calc(66% + 1px);transform:translateX(-50%); width:auto ! important; top:-35px; background:#151B54; color:white;">
+                            <div class="slds-popover__body">Stage 3</div>
+                        </div>
+                        <div class="slds-popover slds-popover_tooltip slds-nubbin_bottom" role="tooltip" id="step1tooltip" style="position:absolute;top:0px;left:calc(28% + 1px);transform:translateX(-50%); width:auto ! important; top:-35px; background:#151B54; color:white;">
+                            <div class="slds-popover__body">Stage 1</div>
+                        </div>
+                    </apex:pageblockSection>
+                </div>
+            </apex:pageBlock>
+        </apex:form>
+    </html>
+</apex:page>

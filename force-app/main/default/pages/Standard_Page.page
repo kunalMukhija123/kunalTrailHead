@@ -1,0 +1,26 @@
+<apex:page standardController="Account" showHeader="false" sidebar="false">
+     <apex:stylesheet value="{!URLFOR($Resource.Lightning, 'assets/styles/salesforce-lightning-design-system.css')}" />
+        <apex:form styleClass="slds">
+            <apex:sectionHeader subtitle="{!Account.Name}">
+                    <apex:pageBlock title="Account Detail">
+                        <apex:pageBlockSection >
+                            <apex:inputField value="{!account.name}" />
+                            <apex:inputField value="{!account.AccountNumber}" />
+                            <apex:inputField value="{!account.AnnualRevenue}" />
+                            <apex:inputField value="{!account.Industry}" />
+                            <apex:inputField value="{!account.Phone}" />
+                            <apex:inputField value="{!account.Fax}" />
+                            <apex:inputField value="{!account.Type}" />
+                            <apex:inputField value="{!account.Website}" />
+                            <apex:inputField value="{!account.YearStarted}" />
+                        </apex:pageBlockSection>
+    
+                        <apex:pageblockButtons >
+                            <apex:commandButton value="Edit" />
+                            <apex:commandButton value="Save" />
+                            <apex:commandButton value="Cancel" />
+                        </apex:pageblockButtons>
+                    </apex:pageBlock>
+            </apex:sectionHeader>    
+        </apex:form>
+</apex:page>

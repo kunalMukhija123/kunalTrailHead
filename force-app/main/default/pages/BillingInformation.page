@@ -1,0 +1,27 @@
+<apex:page standardController="Opportunity" extensions="mycontrollerextension" action="{!createBilling}">
+  <apex:form >
+ <apex:pageBlock title="Create a New Billing Entry">
+ 
+You are viewing the {!opportunity.name} opportunity.
+
+ <apex:pageBlockButtons >
+            <apex:commandButton value="SAVE" onclick="OpenPage('https://c.ap2.visual.force.com/apex/BillingRecordStatus'); return True;"/>
+       </apex:pageBlockButtons>       
+ 
+ <apex:pageBlockSection title="Account Information">
+             <apex:inputText id="Opportunity" value="{!opportunity.name}"/>
+             <apex:inputField id="Date" value="{!opportunity.CloseDate}"/>
+             <apex:inputField id="Stage" value="{!opportunity.StageName}"/>
+ 
+ 
+
+ 
+ 
+ </apex:pageBlockSection>
+
+ </apex:pageBlock>
+
+ 
+ </apex:form>
+ 
+ </apex:page>

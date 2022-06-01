@@ -1,0 +1,36 @@
+<apex:page >
+  <apex:sectionHeader title="Contact Edit" Subtitle="New Contact List"/>
+  <apex:image value="http://www.sfdc99.com/wp-content/uploads/2013/11/logo-dark.png" alt="Children's day images" styleClass="logo"/>
+<apex:form >
+<apex:pageBlock title="Welcome to SFDC" mode="">
+
+<apex:outputPanel styleClass="rules">
+Rule 1: Do not share any contact. <br/>
+Rule 2: Do not make any changes.  <br> </br>
+<iframe width="320" height="180" src="https://www.youtube.com/embed/watch?v=9qL-fh-h1DU"/>
+<apex:flash play="true" loop="true" src="http://www.tizag.com/pics/example.swf"  height="300" width="50%" />
+</apex:outputPanel>
+<apex:pageBlockSection columns="1" showHeader="true" title="MemberShip Status">
+
+</apex:pageBlockSection>
+</apex:pageBlock>
+
+</apex:form>
+<style>
+    .logo {
+      float: right;
+      width: 60px;
+      margin: -65px 20px 0 0;
+    }
+    
+.rules {
+      color: red;
+      font-size: 18px;
+      font-family: Courier;      
+      margin: 10px 0 10px 30px;
+      float: left;
+      width: 100%;
+    }    
+</style>
+
+</apex:page>

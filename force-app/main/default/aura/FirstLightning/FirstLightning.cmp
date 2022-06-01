@@ -1,0 +1,34 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+	<ltng:require scripts="/resource/stockfiles/stockfiles/jquerymin.js" 
+                  afterScriptsLoaded="{!c.myAction}"/>
+     
+    <aura:attribute name="accounts" type="Account[]"></aura:attribute>
+     
+    <!-- REQUIRED SLDS WRAPPER -->
+    <div class="slds">
+        <!-- Page Header -->
+        <div class="slds-page-header">
+            <div class="slds-grid">
+                <div class="slds-col slds-has-flexi-truncate">
+                    <h1 class="slds-text-heading--medium slds-truncate" title="Account Information">Account Information</h1>
+                </div>
+            </div>
+        </div>
+        <!-- TABLE - BADGE COMPONENT -->
+        <table id="tb" class="slds-table slds-table--bordered">
+            <thead>
+                <tr class="slds-text-heading--label">
+                    <th scope="col">
+                        <span class="slds-truncate">Name</span>
+                    </th>
+                    <th scope="col">
+                        <span class="slds-truncate">Phone</span>
+                    </th>
+                    <th scope="col">
+                        <span class="slds-truncate">Active</span>
+                    </th>
+                </tr>
+            </thead>
+        </table><!-- TABLE - BADGE COMPONENT -->
+    </div><!-- REQUIRED SLDS WRAPPER -->  
+</aura:component>

@@ -1,0 +1,15 @@
+<apex:page controller="GL_ExportDemoController" contentType="application/vnd.ms-excel#testExcel.xls"
+                                                readOnly="true">
+    <apex:dataTable value="{!contactList}" var="contact" id="theTable"
+        rowClasses="odd,even" styleClass="tableClass">
+        <apex:column >
+            <apex:facet name="header">ID</apex:facet>
+            {!contact.ID}
+        </apex:column>
+        <apex:column >
+            <apex:facet name="header">Name</apex:facet>
+            {!contact.Name}
+        </apex:column>
+
+    </apex:dataTable>
+</apex:page>

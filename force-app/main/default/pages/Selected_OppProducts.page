@@ -1,0 +1,37 @@
+<apex:page controller="PaginationOffset" showHeader="true" sidebar="true" tabStyle="opportunity">
+    <apex:form >
+        <apex:pageBlock >
+            
+                <apex:pageBlockTable value="{!PriceBookEntry}" var="a" align="center">
+                    
+                    <apex:column >
+                        <apex:facet name="header" >Product</apex:facet>
+                    </apex:column>
+                    
+                    <apex:column headerValue="Quantity">
+                        <apex:inputField value="{!opp.Quantity}"/>
+                    </apex:column> 
+                    
+                     <apex:column headerValue="SalesPrice">
+                        <apex:inputField value="{!a.unitPrice}" />
+                    </apex:column> 
+                    
+                     <apex:column headerValue="Date">
+                        <apex:inputField />
+                    </apex:column>
+                    
+                    <apex:column headerValue="Line Description">
+                        <apex:inputField />
+                    </apex:column>
+
+                          
+                </apex:pageBlockTable>
+           
+                                    
+                    <apex:pageBlockButtons >
+                        <apex:commandButton value="Save"/>
+                        <apex:commandButton value="Cancel"/>
+                    </apex:pageBlockButtons>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

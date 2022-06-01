@@ -1,0 +1,469 @@
+<apex:page applyBodyTag="false" applyHtmlTag="false" standardStylesheets="false" showHeader="false" docType="html-5.0" Controller="QuotationPDFController" renderAs="pdf" >
+    <head>
+        <style type="text/css" media="print">
+            body,html,*{
+                padding: 0;
+                margin: 0;
+            }
+            
+            td {
+                padding: 5px;
+            }
+            
+            @page {
+                size: auto;
+                margin: 20mm 10mm 10mm 10mm;
+                @top-left {
+                    content: element(header_left);
+                }
+                
+                @bottom-left {
+                    content: element(footer_left);
+                }
+                @bottom-right {
+                    content: element(footer_right);
+                }
+
+            }
+            
+            .page-break{
+                page-break-before:always;
+            } 
+
+            /*<!--div { page-break-after: always; }
+            div:last-child { page-break-after: never; }-->*/
+            
+            div.header_left {
+                padding: 20px;
+                position: running(header_left);
+
+            }
+            
+            div.footer_left {
+                padding: 0px 0 5px 0;
+                font-size:8px;
+                vertical-align: top;
+                font-family: Arial;
+                display: block;
+                position: running(footer_left);
+            }
+            div.footer_right {
+                padding: 0px 0 5px 0;
+                text-align: right;
+                font-size:8px;
+                font-family: Arial;
+                display: block;
+                position: running(footer_right);
+            }
+            
+            .pagenumber:before {
+                content: counter(page);
+            }
+            .pagecount:before {
+                content: counter(pages);
+            }
+            
+            .table { 
+                display: table; 
+                width:100%; 
+                margin-top:.25in; 
+                font-size:13px;
+                page-break-inside:auto;
+                border-collapse: collapse;
+            }
+            .table tr th,
+            .table tr td{
+                border: 0.5px solid #000;
+            }
+            .row { 
+                display: table-row; 
+                page-break-inside:avoid; 
+                page-break-after:auto
+            }
+            .cell{ 
+                border: 0.5px solid #000; 
+                border-collapse : collapse; 
+                border-spacing: 0; 
+            }
+            @page { 
+                size: landscape;
+                border: 1px solid black;
+                padding: 0
+            }
+             
+            <!--@page:first{
+                border: 1px solid #000;
+                border-left: 1px solid #000;
+                border-bottom: 1px solid #000;
+                border-right: 1px solid #000;
+                @top-right {
+                    content: element(header_right);
+                }
+            }-->
+           <!-- div.header_right {
+                padding: 20px;
+                margin: 0;
+                position: running(header_right);
+
+            }-->
+            
+            body { 
+                padding: 0;
+                margin: 0;
+                writing-mode: tb-rl;
+                font-family: 'Roboto', 'Segoe UI', Tahoma, sans-serif;
+                font-family: Arial;
+                color: #000;
+            }
+            
+        </style>
+    </head>
+    <apex:form >
+        
+        <div class="header_left">
+            <img src='{!URLFOR($Resource.OlympusLogo)}' title="logo" width="130" height="50"/>
+        </div>
+        
+        
+        <div class="footer_left" style="font-weight: bold; vertical-align: top;">
+            Corporate Office : Ground Floor, Tower-C, SAS Tower, The Medicity Complex, Sector- 38,GURGAON 122001, (Haryana), INDIA.CIN : U33110HR2009FTC039611
+        </div>
+        <div class="footer_right" style="font-weight: bold;"> Subject to GURGOAN jurisdiction <br/>
+            Website: www.olympusmedical.co.in <br/>
+            Page <span class="pagenumber"/> of <span class="pagecount"/>
+        </div>  
+       
+        <div class="content page-break">
+        <table style="width: 100%">
+            <tr>
+                <td style="width: 50%">
+                    
+                </td>
+                <td style="width: 45%">
+                    <div class="header_right">
+                    <div style="font-size:12px; font-family: Arial;">
+                        OLYMPUS MEDICAL SYSTEMS INDIA PVT LTD.<br/>
+                        Plot No - 536<br/>
+                        GF Udyog Vihar, Phase-V GURGAON 122001 India<br/>
+                        Tel: 0124-4999191, Fax: 0124-4999190<br/><br/>
+                        <Strong style="font-size:12px;">
+                            STATE CODE: HR<br/>
+                            GST NO. 06AABCO2131L1ZO
+                        </Strong>
+                    </div>    
+                </div>  
+                </td>
+            </tr>
+        </table>
+             
+
+            <div style= " margin-top: 10px; font-size:12px; font-family: Arial; text-align:center; font-weight: bold;">
+                SALES DIRECT QUOTATION
+            </div>
+            <apex:pageBlock >
+                <table class="table" Style ="font-family: Arial;">
+                    <tr>
+                        <td style="font-size:12px; text-align:left; width:50%">
+                            Account Info.
+                        </td>
+                        <td style="font-size:12px; text-align:left; width:50%">
+                            Quotation Values
+                        </td>
+                    </tr>
+                </table>
+            </apex:pageBlock><br/>
+        
+            <div style= "font-size:12px; text-decoration: underline; font-weight: bold; margin-left:5px;">
+                Kind Attn:-        
+            </div>
+        
+            <apex:pageBlock >
+                <table class="table" style="text-align:center; font-family: Arial;">
+                    <thead>
+                        <tr class="row">
+                            <th colspan="1" rowspan="2" width="5%">S.No.</th>
+                            <th colspan="1" rowspan="2" width="7%">Item Code</th>
+                            <th colspan="1" rowspan="2" width="7%">HSN/SAC Code</th>
+                            <th colspan="1" rowspan="2" width="20%">Item Desc</th>
+                            <th colspan="1" rowspan="2" width="5%">Qty</th>
+                            <th colspan="1" rowspan="2" width="7%">Unit Price</th>
+                            <th colspan="1" rowspan="2" width="7%">Gross Amount</th>
+                            <th colspan="2">CGST</th>
+                            <th colspan="2">SGST</th>
+                            <th colspan="2">IGST</th>
+                            <th colspan="1">CESS</th>
+                            <th colspan="1" rowspan="2" width="9%">TOTAL TAX</th>
+                        </tr>
+                        
+                        <tr>   
+                            <th width="3%">Rate</th>
+                            <th>Amt</th>
+                            <th width="3%">Rate</th>
+                            <th>Amt</th>
+                            <th width="3%">Rate</th>
+                            <th>Amt</th>
+                            <th></th>                        
+                        </tr>
+                    </thead>
+                    <apex:variable value="{!1}" var="rowNum"/>
+                    <apex:repeat value="{!lstOfQuoteLineItems}" var="QLI">
+                        <tr class="row">
+                            <td class="cell">{!rowNum}</td>
+                            <td class="cell">45645735</td>
+                            <td class="cell">439879797</td>
+                            <td class="cell">{!QLI.Product2.Name}</td>
+                            <td class="cell">{!QLI.quantity}</td>
+                            <td class="cell">{!QLI.unitPrice}</td>
+                            <td class="cell">{!QLI.subTotal}</td>
+                            <td class="cell">6856</td>
+                            <td class="cell">67777</td>
+                            <td class="cell">{!QLI.subTotal}</td>
+                            <td class="cell">{!QLI.subTotal}</td>
+                            <td class="cell">{!QLI.subTotal}</td>
+                            <td class="cell">{!QLI.subTotal}</td>
+                            <td class="cell">{!QLI.subTotal}</td>
+                            <td class="cell">60000</td>
+                        </tr>
+                        <apex:variable var="rowNum" value="{!rowNum + 1}"/>
+                    </apex:repeat>
+                    
+                    <tr>
+                        
+                        <td colspan="4" style="text-align: right;">Total</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    
+                    <tr>
+                        <td colspan="6" rowspan="4"></td>
+                        <td style="text-align: right; border-right: none;" colspan="4">
+                            Subtotal
+                        </td>
+                        <td style="text-align: right; border-left: none; " colspan="5"></td>
+                    </tr>
+                    <tr>
+                         
+                        <td style="text-align: right; border-right: none;" colspan="4">
+                            Total TAX
+                        </td>
+                        <td style="text-align: right; border-left: none; " colspan="5"></td>
+                    </tr>
+                    <tr>
+                         
+                        <td style="text-align: right; border-right: none;" colspan="4">
+                            Round Off Amount
+                        </td>
+                        <td style="text-align: right; border-left: none; " colspan="5"></td>
+                    </tr>
+                    <tr>
+                         
+                        <td style="text-align: right; border-right: none;" colspan="4">
+                            Grand Total
+                        </td>
+                        <td style="text-align: right; border-left: none; " colspan="5"></td>
+                    </tr>
+                    <tr>
+                         <td colspan="4" style="border-right: none;"></td>
+                        <td colspan="4" style="border-left: none;border-right: none; text-align: right;">
+                            INR:
+                        </td>
+                        <td colspan="7" style="border-left: none;"></td>
+                    </tr>
+                </table>
+            </apex:pageBlock>
+            
+            <apex:pageBlock >
+                <table class="table" style="font-family: Arial;" cellpadding="10" cellSpacing="10">
+                    <tr>
+                        <td style="font-size:12px; border-right:none; font-weight:bold; width: 50% ">
+                            OLYMPUS MEDICAL SYSTEMS INDIA PVT LTD. <br/><br/>                       
+                            Name: Malleswaran. D<br/>                                             
+                            Title : Executive- Sales (Gastroenteology)<br/>                       
+                            Date :            <br/>
+                        </td>
+                        <td style="font-size:12px; border-left:none; font-weight:bold; width: 50%">
+                            Customer's Acceptance <br/><br/>
+                            Name: <br/>
+                            Title: <br/>
+                            Date: <br/>
+                        </td>
+                    </tr>
+                </table>
+            </apex:pageBlock>
+        
+            <table style="line-height: 1.0; width:100%; font-size:12px; line-height:6px; font-family: Arial;">
+                <tr>
+                    <th style="width: 15%;line-height: 1.5">Terms &amp; Conditions</th>
+                    <td></td> 
+                </tr>
+                <tr>
+                    <th>Local Taxes</th>
+                    <td style="line-height: 1.5">Included (Any change in Govt. Levies will be applied at the time of billing).</td> 
+                </tr>
+                <tr>
+                    <th>Price</th>
+                    <td style="line-height: 1.5">Price quoted if F O R destination Hospital Site.</td> 
+                </tr>
+                <tr>
+                    <th>Way Bill</th>
+                    <td style="line-height: 1.5">Way Bill wherever applicable has to be provided by the customer before dispatch of material</td> 
+                </tr>
+                <tr>
+                    <th>Order Placement</th>
+                    <td style="line-height: 1.5">Order is to be placed in favor of: M/S Olympus Medical Systems India Pvt. Ltd., having office 536, GF Udyog Vihar, Phase - V, Gurgaon-122001, India.</td> 
+                </tr>
+                <tr>
+                    <th>Payment Terms</th>
+                    <td style="line-height: 1.5">100% advance payment by DD in favour of Olympus Medical Systems India Pvt. Ltd., payable at Gurgaon along with our purchase order/RTGS remittance.</td> 
+                </tr>
+                <tr>
+                    <th>Delivery</th>
+                    <td style="line-height: 1.5">Within 6-8 weeks from the date of receipt of technically &amp; Commercially confirmed Order.</td> 
+                </tr>
+                <tr>
+                    <th>Environment</th>
+                    <td style="line-height: 1.5">The equipment offered can be damaged by dust and extreme changes in temperature andhumidity and we shall not be liable for damage caused by the same.</td> 
+                </tr>
+                <tr>
+                    <th>Power Requirement</th>
+                    <td style="line-height: 1.5">Customer Responsibility</td> 
+                </tr>
+                <tr>
+                    <th></th>
+                    <td style="line-height: 1.5">Proper specified power &amp; installation of line switches, circuit breakers, junction boxes, conduit, raceway, and surge protection</td>
+                </tr>
+                <tr>
+                    <th>Safety</th>
+                    <td style="line-height: 1.5">For continued safe and optimum use of this equipment, the purchaser shall strictly follow the instructions given in the Operational manual. We shall not be responsible <br/>
+                        for damage, injuries or losses suffered or caused due to, directly or indirectly, non-compliance with the operator 's manual and other related instructions and norms. <br/>
+                        The Customer hereby agrees and accepts that we or our principals are not responsible for anysuch damage that may occur to any party and the customer further undertakes <br/>
+                        to keep us and our principals indemnified from any claims that may arise out of or in relation to such damage from any party.
+                    </td> 
+                </tr>
+                <tr>
+                    <th>Intellectual Property</th>
+                    <td style="line-height: 1.5">It is agreed and acknowledged by the purchaser that in respect of all programs, software, manuals, techniques, and other forms of proprietary information supplied by us
+                    </td> 
+                </tr>
+                <tr>
+                    <th>Rights</th>
+                    <td style="line-height: 1.5">through any acceptable media, whether documented or not, or constituted or contained in the equipment, operating manuals, product data sheets etc., shall be and remain
+                    </td> 
+                </tr>
+                <tr>
+                    <th></th>
+                    <td style="line-height: 1.5">the sole and exclusive property of us or the respective owner of such intellectual property , and that the sale of the equipment along with and such property or <br/>
+                         copyrightable materials supplied by us, shall only constitute a right to use by the purchaser and shall not amount to transfer of any such Intellectual property rights <br/>
+                         in favour of the customer. The purchaser undertakes to not make any unauthorized copied, by any means,or in any manner violate, breach, or infringe any and all or  <br/>
+                         any of the said intellectual property rights and the customer shall be directly responsible for such a breach. 
+                    </td>
+                    
+                </tr>
+                <tr>
+                    <th>Modifications</th>
+                    <td style="line-height: 1.5">1. Principals reserve the right to make and design improvements until the Products are delivered. Such improvement,however, shall not modify any material'aspect of the <br/>
+                        Product.
+                    </td> 
+                </tr>
+                <tr>
+                    <th></th>
+                    <td style="line-height: 1.5">
+                        2. If any modification to the product is required pursuant to any law or governmental regulation or requirement or interpretation thereof by any governmental agency, <br/>
+                        which is effective prior to the delivery date and which is applicable to the intended use of the product by the hospital, then in order to meet such requirement, such <br/>
+                        modification shall be made prior to the delivery date. <br/>
+                        3. The customer shall pay to us the increased price if any caused by the modification saidabove such price increase however shall be agreed with mutual consent.
+                    </td> 
+                </tr>
+                <tr>
+                    <th>Warranty</th>
+                    <td style="line-height: 1.5">We warrant the equipment against manufacturing defects, if any for a period of 12 months from the date of installation subject to Force Majeure and the following conditions
+                    </td> 
+                </tr>
+                <tr>
+                    <th></th>
+                    <td style="line-height: 1.5">Note: <br/>
+                        1.INR Deals: <br/>
+                        (a).Olympus-12 months from the date of installation or 13 months from the date of invoice to the customer whichever is earlier. <br/>
+                        (b).In cases of products of other than Olympus 12 months from the date of installation from thedate of invoice to the customer. <br/>
+                        2.This warranty does not cover consumables, normal wear &amp; tear, wrongful handling, not following the user instructions given in the literature and unauthorized attachments or modifications
+                    </td> 
+                </tr>
+                <tr>
+                    <th></th>
+                    <td style="line-height: 1.5">3.The warranty clause does not apply for the defects / repairs caused to the equipment due to negligent action of and commissions and omissions by the customer or the representative. The breach of contract conditions like non-payment / delayed payment of <br/>
+                        4.Opportunity cost and any other indirect costs incurred by the customer do not fall into the orbit or warranty. <br/>
+                        5.The warranty claims what so ever, will be restricted to the value of goods sold, in case of return of goods by the customer due to manufacturing defects if mutually agreed
+                        upon.
+                    </td> 
+                </tr>
+                <tr>
+                    <th>Force majeure</th>
+                    <td style="line-height: 1.5">We shall not be liable for loss or damage due to delays caused by force majeure conditions and any failure of or delay in The performance of this Agreement for the period 
+                    </td> 
+                </tr>
+                <tr>
+                    <th></th>
+                    <td style="line-height: 1.5">period that such period that such failure or delay is due to causes beyond its reasonable control, including but not limited to acts of God, war,strikes or labour,disputes, <br/>
+                        embargoes, government orders,natural calamities or any other force majeure event. 
+                    </td> 
+                </tr>
+                <tr>
+                    <th>Arbitration</th>
+                    <td style="line-height: 1.5">Any difference or dispute arising out of or any reconciliation to these standard trading terms and conditions shall be Referred to arbitration. The arbitration shall be conducted 
+                    </td> 
+                </tr>
+                <tr>
+                    <th></th>
+                    <td style="line-height: 1.5">in accordance with the Arbitration and Reconciliation Act, 1996 and the venue of the arbitration shall be at Gurgaon. 
+                    </td> 
+                </tr>
+                <tr>
+                    <th>Limitation of Liability</th>
+                    <td style="line-height: 1.5">In not event will company be liable to you for any lost profits, lost savings or incidental, indirect special or consequential damages, arising out of your use or inability
+                    </td> 
+                </tr>
+                <tr>
+                    <th></th>
+                    <td style="line-height: 1.5">to use the product or the breach of this agreement, and violation of user manual conditions even if advised of the possibility of such damages.
+                    </td> 
+                </tr>
+                <tr>
+                    <th>Deeming Clause</th>
+                    <td style="line-height: 1.5">The purchase order placed by the customer in response to the quotation is deemed to have accepted the terms and conditions attached to the quotation except to the extent,
+                    </td> 
+                </tr>
+                <tr>
+                    <th></th>
+                    <td style="line-height: 1.5">contrary conditions imposed if any in the customer Order. The contrary conditions if any imposed in the customer order require negotiation and acceptance.
+                    </td> 
+                </tr>
+                <tr>
+                    <th>Jurisdiction and</th>
+                    <td style="line-height: 1.5">Without prejudice to the arbitration clause any litigation that may arise out of or in relation to this Agreement including but not limited to any application under
+                    </td> 
+                </tr>
+                <tr>
+                    <th>Applicability of Law</th>
+                    <td style="line-height: 1.5">Section 9 and 11 of the Arbitration and the Conciliation of 1996 shall be dealt by the Courts in Gurgaon only in exclusion of all other courts. 
+                    </td> 
+                </tr>
+                <tr>
+                    <th></th>
+                    <td style="font-style: italic;">The Agreement shall be governed by the Laws of the Union of India and the State of Haryana. 
+                    </td> 
+                </tr>
+                
+            </table>
+        </div>
+    </apex:form>
+    
+</apex:page>

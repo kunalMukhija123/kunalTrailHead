@@ -1,0 +1,252 @@
+<apex:page showHeader="false" standardStylesheets="false" sidebar="false" docType="html-5.0">
+    <html lang="en"  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style = "margin-top: 75px;"> 
+     <!--  <apex:stylesheet value="{!URLFOR($Resource.SLDS, 'assets/styles/salesforce-lightning-design-system-vf.css')}" />   -->
+     
+        <apex:slds />    
+        <head>
+            <script>
+            function Progress(a){
+                debugger;
+                var elem_id = a.id;
+                var ActiveId = document.querySelector('.slds-is-active').id;
+                var DivElement = document.getElementById(ActiveId);
+                var Icon = ActiveId.replace( /^\D+/g, 'Icon');
+                var svgIcon = document.getElementById(Icon);
+                var tooltp= ActiveId.replace( /^\D+/g, 'toolTip');
+                var tooltip= document.getElementById(tooltp);
+                var pageblock= ActiveId.replace( /^\D+/g, 'pg-Blk');
+                var pgblk= document.getElementById(pageblock);
+                
+                var n1 = Icon.replace( /^\D+/g, '');
+                var num = ActiveId.replace( /^\D+/g, '');
+                var num2;
+                if(elem_id == "btn_Nxt")
+                {
+                    num2 = parseInt(num);
+                    num = parseInt(num) + 1;
+                }
+                else
+                {
+                    num2 = parseInt(num) - 2;
+                    num = parseInt(num) - 1;
+                }
+                var nextelemId = "a" + num;
+                var nxtsec = "pg-Blk" + num;
+                var NextIcon = "Icon" + num;
+                var NextDivElement = document.getElementById(nextelemId);
+                var NextIconElem = document.getElementById(NextIcon);
+                var nextpgblk = document.getElementById(nxtsec);
+                
+                var nxttoolTip = "toolTip" + num;
+                var tipIcon = document.getElementById(nxttoolTip);
+                
+                if(NextDivElement  != null)
+                {
+                    DivElement.classList.remove("slds-is-active");
+                    NextDivElement.classList.add("slds-is-active");
+                    svgIcon.style.display = "block";
+                    tipIcon.style.display="block";
+                   
+                    if(n1 > num)
+                    {
+                        svgIcon.style.display = "none";
+                        tooltip.style.display="none";
+                    }
+                    
+                    NextIconElem.style.display = "none";
+                    
+                    var progresschange = document.getElementById('progressbar');
+                    progresschange.setAttribute("aria-valuenow",25*num2);
+                    var num1 = 50*num2+"%";
+                    document.getElementById('spanwidth').style.width = num1;
+                    nextpgblk.style.display="block";
+                    pgblk.style.display ="none";
+                }
+            }
+            </script>
+        </head>
+        
+        <body class="slds-scope">
+            <div class="demo-only" style="padding:1rem;">
+                <div class="slds-progress">
+                    <ol class="slds-progress__list">
+                        <li class="slds-progress__item slds-is-active" id="a1">
+                            <button class="slds-button slds-progress__marker" id="btn_1"> 
+                                <img id="Icon1" style="display:none;" src="{!URLFOR($Asset.SLDS,'/assets/icons/utility/success_60.png')}"/>
+                                <span class="slds-assistive-text" id="SP_1">Step 1 - Active</span>
+                            </button>
+                        </li>
+                        <li class="slds-progress__item" id="a2">
+                            <button class="slds-button slds-progress__marker">
+                                <img id="Icon2" style="display:none;" src="{!URLFOR($Asset.SLDS,'/assets/icons/utility/success_60.png')}"/>
+                                <span class="slds-assistive-text">Step 2 </span>
+                            </button>
+                        </li>
+                        <li class="slds-progress__item " id="a3">
+                            <button class="slds-button slds-progress__marker">
+                                <img id="Icon3" style="display:none;" src="{!URLFOR($Asset.SLDS,'/assets/icons/utility/success_60.png')}"/>
+                                <span class="slds-assistive-text">Step 3 </span>
+                            </button>
+                        </li>
+            <!--            <li class="slds-progress__item" id="a4">
+                            <button class="slds-button slds-progress__marker">
+                                <img id="Icon4" style="display:none;" src="{!URLFOR($Asset.SLDS,'/assets/icons/utility/success_60.png')}"/>
+                                <span class="slds-assistive-text">Step 4 </span>
+                            </button>
+                        </li>
+                        <li class="slds-progress__item" id="a5">
+                            <button class="slds-button slds-progress__marker">
+                                <img id="Icon5" style="display:none;" src="{!URLFOR($Asset.SLDS,'/assets/icons/utility/success_60.png')}"/>
+                                <span class="slds-assistive-text">Step 5 </span>
+                            </button>
+                        </li>   -->
+                    </ol>
+                    <div class="slds-progress-bar slds-progress-bar_x-small" id="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" role="progressbar">
+                        <span class="slds-progress-bar__value" id="spanwidth" style="width:0%;">
+                            <span class="slds-assistive-text">Progress: 0%</span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="slds-popover slds-popover_tooltip slds-nubbin_bottom" role="tooltip" id="toolTip1" style="position:absolute;top:0px;left:calc(16% + 3px);transform:translateX(-50%); width:auto ! important; top:-35px; background:#151B54; color:white; margin-top:80px;">
+                <div class="slds-popover__body">Stage 1</div>
+            </div>
+            <div class="slds-popover slds-popover_tooltip slds-nubbin_bottom" role="tooltip" id="toolTip2" style=" display:none; position:absolute;top:0px;left:calc(50% + 0px);transform:translateX(-50%); width:auto ! important; top:-35px; background:#151B54; color:white; margin-top:80px;">
+                <div class="slds-popover__body">Stage 2</div>
+            </div>
+            <div class="slds-popover slds-popover_tooltip slds-nubbin_bottom" role="tooltip" id="toolTip3" style=" display:none; position:absolute;top:0px;left:calc(83% + 8px);transform:translateX(-50%); width:auto ! important; top:-35px; background:#151B54; color:white; margin-top:80px;">
+                <div class="slds-popover__body">Stage 3</div>
+            </div>
+    <!--        <div class="slds-popover slds-popover_tooltip slds-nubbin_bottom" role="tooltip" id="toolTip4" style=" display:none; position:absolute;top:0px;left:calc(67% + 2px);transform:translateX(-50%); width:auto ! important; top:-35px; background:#151B54; color:white; margin-top:80px;">
+                <div class="slds-popover__body">Stage 4</div>
+            </div>
+            <div class="slds-popover slds-popover_tooltip slds-nubbin_bottom" role="tooltip" id="toolTip5" style=" display:none; position:absolute;top:0px;left:calc(83% + 12px);transform:translateX(-50%); width:auto ! important; top:-35px; background:#151B54; color:white; margin-top:80px;">
+                <div class="slds-popover__body">Stage 5</div>
+            </div>   -->
+            
+            <div class="slds-card" id="AccountInfo">
+                    
+            
+            <apex:pageBlock >  
+                <div class="slds-card__header slds-grid">
+                        <div class="slds-media slds-media--center slds-has-flexi-truncate">
+                            <div class="slds-media__body">
+                                <h2 class="slds-text-heading--small slds-truncate">Step 1 : Account Information</h2> 
+                            </div>
+                        </div>
+                    </div> 
+                <div class="slds-section-title--divider slds-text-heading--Medium">
+                    <h1>Contact Data</h1>
+                </div>
+                
+                <div style="margin-left:425px;">
+                    <div id = "pg-Blk1" class="slds-section__title">
+                        <apex:pageblockSection title="First Page">
+                        
+                            <div class="slds-form-element">
+                                <label class="slds-form-element__label" for="con-Name">Name</label>
+                                <div class="slds-form-element__control">
+                                    <input type="text" id="con-Name" class="slds-input" style="width: 600px;"/>
+                                </div>
+                            </div>
+                            
+                            <div class="slds-form-element">
+                                <label class="slds-form-element__label" for="conFst-Name">First Name</label>
+                                <div class="slds-form-element__control">
+                                    <input type="text" id="conFst-Name" class="slds-input" style="width: 600px;"/>
+                                </div>
+                            </div>
+                            
+                            <div class="slds-form-element">
+                                <label class="slds-form-element__label" for="conLst-Name">Last Name</label>
+                                <div class="slds-form-element__control">
+                                    <input type="text" id="conLst-Name" class="slds-input" style="width: 600px;"/>
+                                </div>
+                            </div>
+                            
+                            <div class="slds-form-element">
+                                <label class="slds-form-element__label" for="con-Email">Email</label>
+                                <div class="slds-form-element__control">
+                                    <input type="text" id="con-Email" class="slds-input" style="width: 600px;"/>
+                                </div>
+                            </div>
+                        </apex:pageblockSection>
+                    </div>
+                    
+                    <div style="display:none;" id = "pg-Blk2" class="slds-section__title">
+                        <apex:pageblockSection title="Second Page">
+                            
+                            <div class="slds-form-element">
+                                <label class="slds-form-element__label" for="con1-Phone">Phone</label>
+                                <div class="slds-form-element__control">
+                                    <input type="text" id="con1-Phone" class="slds-input" style="width: 600px;"/>
+                                </div>
+                            </div>
+                            
+                            <div class="slds-form-element">
+                                <label class="slds-form-element__label" for="conFst1-Mob">Mobile</label>
+                                <div class="slds-form-element__control">
+                                    <input type="text" id="conFst1-Mob" class="slds-input" style="width: 600px;"/>
+                                </div>
+                            </div>
+                            
+                            <div class="slds-form-element">
+                                <label class="slds-form-element__label" for="conLst1-Fax">Fax</label>
+                                
+                                <div class="slds-form-element__control">
+                                    <input type="text" id="conLst1-Fax" class="slds-input" style="width: 600px;"/>
+                                </div>
+                            </div>
+                            
+                            <div class="slds-form-element">
+                                <label class="slds-form-element__label" for="con1-Add">Address</label>
+                                <div class="slds-form-element__control">
+                                    <input type="text" id="con1-Add" class="slds-input" style="width: 600px;"/>
+                                </div>
+                            </div>
+                        </apex:pageblockSection>
+                    </div>
+                    
+                    <div style="display:none;" id = "pg-Blk3" class="slds-section__title">
+                        <apex:pageblockSection title="Third Page">
+                        
+                            <div class="slds-form-element">
+                                <label class="slds-form-element__label" for="con2-birDat" style="width: 600px;">Birthdate</label>
+                                <div class="slds-form-element__control">
+                                    <input type="text" id="con2-birDat" class="slds-input" style="width: 600px;"/>
+                                </div>
+                            </div>
+                            
+                            <div class="slds-form-element">
+                                <label class="slds-form-element__label" for="conFst2-ConOwner">contact owner</label>
+                                <div class="slds-form-element__control">
+                                    <input type="text" id="conFst2-ConOwner" class="slds-input" style="width: 600px;"/>
+                                </div>
+                            </div>
+                            
+                            <div class="slds-form-element">
+                                <label class="slds-form-element__label" for="conLst2-DepMent">Department</label>
+                                <div class="slds-form-element__control">
+                                    <input type="text" id="conLst2-DepMent" class="slds-input" style="width: 600px;"/>
+                                </div>
+                            </div>
+                            
+                            <div class="slds-form-element">
+                                <label class="slds-form-element__label" for="con2-DesCre">Description</label>
+                                <div class="slds-form-element__control">
+                                    <input type="text" id="con2-DesCre" class="slds-input" style="width: 600px;"/>
+                                </div>
+                            </div>
+                        </apex:pageblockSection>
+                    </div><br/><br/>
+                </div>
+            </apex:pageBlock>  
+            </div><br/><br/>
+            <div style="margin-left:650px;">
+                <button class="slds-button slds-button--neutral" style="background:#1589ee; color:white;" Id="btn_Pre" onclick="Progress(this)">Previous</button>
+                <button class="slds-button slds-button--neutral" style="background:#1589ee; color:white;" Id="btn_Nxt" onclick="Progress(this)">Next</button>
+            </div>
+        </body>
+    </html>  
+</apex:page>

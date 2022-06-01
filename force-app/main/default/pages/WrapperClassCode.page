@@ -1,0 +1,15 @@
+<apex:page controller="wrappertest">
+    <apex:form >
+        <apex:selectList value="{!selectedstatus}" size="1">
+            <apex:selectOptions value="{!status}"/>
+        </apex:selectList>
+        <apex:commandButton action="{!changeStatus}" value="Update Status"/>
+        <apex:datatable value="{!recordlist}" var="rec">
+            <apex:column >
+                <apex:inputCheckbox value="{!rec.selected}"/>
+            </apex:column>
+            <apex:column value="{!rec.record.name}" headerValue="Product Name"/>
+            <apex:column value="{!rec.record.isActive}" headerValue="Active"/>
+        </apex:datatable>
+    </apex:form>
+</apex:page>

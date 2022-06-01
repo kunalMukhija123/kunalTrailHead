@@ -1,0 +1,12 @@
+<apex:page controller="NewAndExistingController" >
+
+
+       <apex:form >
+          <apex:pageBlock >
+              
+               <apex:image url="{!$Resource.Resource}" width="100" height="50"/> <br/>
+               <apex:commandButton value="       Call visualforce Page      " action="{!click}"/>
+          </apex:pageBlock>
+     </apex:form>
+
+</apex:page>

@@ -1,0 +1,29 @@
+<!-- Purpose to show all object in a selected list and related fields in dependent list and show selected fields to the page block table -->
+<apex:page controller="ObjectFieldRecordsController">
+    <apex:form id="theForm">
+      
+        <apex:pageBlock title="Select Object and field">
+            <apex:pageBlockSection >
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel value="Select any Object" />
+                    <!-- Selected list to display all objects present in this organization -->
+                    <apex:SelectList value="{!objectName}" size="1">
+                        <!-- PickList of object -->
+                        <apex:selectOptions value="{!listOfObject}" />
+                        <apex:actionSupport event="onchange" reRender="theForm"/>
+                    </apex:SelectList>
+                    
+                </apex:pageBlockSectionItem>   <p/>  <p/>
+                   <apex:pageBlockSectionItem id="field">
+                     <apex:outputLabel value="Select any Field" />
+                    <!-- Selected list to display all fields related to selected object from object's selected list in this organization -->
+                    <apex:SelectList size="1" value="{!stringFieldName}" disabled="{!if(fieldName.size==1,true,false)}" multiselect="false">
+                        <apex:Selectoptions value="{!fieldName}" />
+                    </apex:SelectList>
+                </apex:pageBlockSectionItem>
+        
+            </apex:pageBlockSection>
+        </apex:pageBlock>
+        
+    </apex:form>
+</apex:page>

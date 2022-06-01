@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Room_No_Validation</fullName>
+    <active>true</active>
+    <errorConditionFormula>!AND( BEGINS( Name , &apos;RM_&apos;), LEN(Name) &lt;= 8)</errorConditionFormula>
+    <errorDisplayField>Name</errorDisplayField>
+    <errorMessage>Room Number should start with &apos;RM_&apos; and length should not more than 8.</errorMessage>
+</ValidationRule>

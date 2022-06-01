@@ -1,0 +1,155 @@
+<apex:page controller="PaginationOffset" showHeader="true" sidebar="true" tabStyle="opportunity" id="pg">
+
+    <apex:form id="full">
+
+        <script type="text/javascript">
+            function selectAllCheckboxes(obj, receivedInputID) {
+                var inputCheckBox = document.getElementsByTagName("input");
+                for (var i = 0; i < inputCheckBox.length; i++) {
+                    if (inputCheckBox[i].id.indexOf(receivedInputID) != -1) {
+                        inputCheckBox[i].checked = obj.checked;
+                    }
+                }
+            }
+        </script>
+
+        <apex:actionstatus id="counterStatus">
+            <apex:facet name="start">
+                <div class="waitingSearchDiv" id="el_loading" style="background-color: #fbfbfb; height:100%;opacity:0.65;width:100%;">
+                    <div class="waitingHolder" style="top: 100px; width: 91px;">
+                        <img class="waitingImage" src="/img/loading.gif" title="Please Wait..." />
+                        <span class="waitingDescription">Loading...</span>
+                    </div>
+                </div>
+            </apex:facet>
+        </apex:actionstatus>
+
+        <!-- <apex:actionFunction name="refreshPage"  reRender="Pb" status="counterStatus"/>  -->
+
+        <apex:actionFunction name="linkClicked" action="{!counterReset}" status="counterStatus" reRender="pb,showmsg">
+            <apex:param name="p1" assignTo="{!alpha}" value="" />
+        </apex:actionFunction>
+
+        <apex:sectionHeader title="Product Selction for" subtitle="{!oppObj.Name}" />
+
+
+        <apex:pageBlock id="pb" rendered="{!Show_Hide == false}">
+
+
+
+            <apex:toolbar >
+                <apex:toolbarGroup itemSeparator="line">
+                    <apex:commandLink value="A" onclick="linkClicked('A'); return false;" style="color:white;" reRender="pbt" />
+                    <apex:commandLink value="B" onclick="linkClicked('B'); return false;" style="color:white;" reRender="pbt" />
+                    <apex:commandLink value="C" onclick="linkClicked('C'); return false;" style="color:white;" reRender="pbt" />
+                    <apex:commandLink value="D" onclick="linkClicked('D'); return false;" style="color:white;" reRender="pbt" />
+                    <apex:commandLink value="E" onclick="linkClicked('E'); return false;" style="color:white;" reRender="pbt" />
+                    <apex:commandLink value="F" onclick="linkClicked('F'); return false;" style="color:white;" reRender="pbt" />
+                    <apex:commandLink value="G" onclick="linkClicked('G'); return false" style="color:white;" reRender="pbt" />
+                    <apex:commandLink value="H" onclick="linkClicked('H'); return false" style="color:white;" reRender="pbt" />
+                    <apex:commandLink value="I" onclick="linkClicked('I'); return false" style="color:white;" reRender="pbt" />
+                    <apex:commandLink value="J" onclick="linkClicked('J'); return false;" style="color:white;" reRender="pbt" />
+                    <apex:commandLink value="K" onclick="linkClicked('K'); return false;" style="color:white;" reRender="pbt" />
+                    <apex:commandLink value="L" onclick="linkClicked('L'); return false;" style="color:white;" reRender="pbt" />
+                    <apex:commandLink value="M" onclick="linkClicked('M'); return false;" style="color:white;" reRender="pbt" />
+                    <apex:commandLink value="N" onclick="linkClicked('N'); return false;" style="color:white;" reRender="pbt" />
+                    <apex:commandLink value="O" onclick="linkClicked('O'); return false;" style="color:white;" reRender="pbt" />
+                    <apex:commandLink value="P" onclick="linkClicked('P'); return false;" style="color:white;" reRender="pbt" />
+                    <apex:commandLink value="Q" onclick="linkClicked('Q'); return false;" style="color:white;" reRender="pbt" />
+                    <apex:commandLink value="R" onclick="linkClicked('R'); return false;" style="color:white;" reRender="pbt" />
+                    <apex:commandLink value="S" onclick="linkClicked('S'); return false" style="color:white;" reRender="pbt" />
+                    <apex:commandLink value="T" onclick="linkClicked('T'); return false;" style="color:white;" reRender="pbt" />
+                    <apex:commandLink value="U" onclick="linkClicked('U'); return false;" style="color:white;" reRender="pbt" />
+                    <apex:commandLink value="V" onclick="linkClicked('V'); return false;" style="color:white;" reRender="pbt" />
+                    <apex:commandLink value="W" onclick="linkClicked('W'); return false;" style="color:white;" reRender="pbt" />
+                    <apex:commandLink value="X" onclick="linkClicked('X'); return false;" style="color:white;" reRender="pbt" />
+                    <apex:commandLink value="Y" onclick="linkClicked('Y'); return false;" style="color:white;" reRender="pbt" />
+                    <apex:commandLink value="Z" onclick="linkClicked('Z'); return false;" style="color:white;" reRender="pbt" />
+                    <apex:commandLink value="ALL" onclick="linkClicked('ALL'); return false;" style="color:white;" reRender="pbt" />
+                </apex:toolbarGroup>
+            </apex:toolbar> <br/>
+
+            <apex:pageBlockButtons Location="Bottom" id="Buttons" rendered="{!conWrapList.Size > 0}">
+                <apex:commandButton value="Select" action="{!SelectRecord}" reRender="full" status="counterStatus" />
+                <apex:commandButton value="Cancel" action="{!Cancel1}" reRender="full" status="counterStatus" />
+                <apex:commandButton action="{!Beginning}" value="<<" disabled="{!disablePrevious}" reRender="pbt,pb,Buttons,full" status="counterStatus" />
+                <apex:commandButton action="{!Previous}" value="<" disabled="{!disablePrevious}" reRender="pbt,pb,Buttons,full" status="counterStatus" />
+                <apex:commandButton action="{!Next}" value=">" disabled="{!disableNext}" reRender="pbt,pb,Buttons , full" status="counterStatus" />
+                <apex:commandButton action="{!End}" value=">>" disabled="{!disableNext}" reRender="pbt,pb,Buttons,full" status="counterStatus" />
+
+                <div display="inline-block" style="float:right;">
+                    <B> Page {!pageNumber} of {!totalPages} </B>
+                </div>
+            </apex:pageBlockButtons>
+
+            <apex:pageBlockSection collapsible="true" columns="1">
+
+                <apex:outputPanel rendered="{!conWrapList.Size == 0}">
+                    <apex:outputText value="No Records To display" />
+                </apex:outputPanel>
+                <apex:pageBlockTable value="{!ConWrapList}" var="a" align="center" id="pbt" rendered="{!conWrapList.Size > 0}">
+                
+                          <apex:column rendered="{!conWrapList != 0}">
+                            <apex:facet name="header">
+                                <apex:inputCheckbox onclick="selectAllCheckboxes(this,'inputId')" />
+                            </apex:facet>
+                            <apex:inputCheckbox value="{!a.isSelected}" id="inputId" />
+                        </apex:column>
+                    <apex:repeat value="{!$ObjectType.PricebookEntry.fieldsets.PriceBookEntryFS}" var="fieldValue">
+                      
+                        
+                  <!--      <apex:column value="{!a.conObj.Product2.Name}" />
+                        <apex:column value="{!a.conObj.ProductCode}" />
+                        <apex:column value="{!a.conObj.unitPrice}" />   -->
+                        
+                         <apex:column value="{!a.conObj[fieldValue]}" />
+                       </apex:repeat>
+                        <!--   <apex:facet name="footer">Showing Page # {!pageNumber} of {!totalPages}</apex:facet>     -->
+    
+    
+                </apex:pageBlockTable>
+
+
+            </apex:pageBlockSection>
+
+
+
+
+        </apex:pageBlock>
+
+
+        <apex:pageBlock rendered="{!Show_Hide == true}">
+
+            <apex:pageBlockTable value="{!OppLineItem}" var="a" align="center">
+                
+                    <apex:column >
+                        <apex:facet name="header">Product</apex:facet>
+                        {!a.PriceBookEntry.Product2.Name}
+                    </apex:column>
+    
+                    <apex:column headerValue="Quantity">
+                        <apex:inputField value="{!a.Quantity}" />
+                    </apex:column>
+    
+                    <apex:column headerValue="SalesPrice">
+                        <apex:inputText value="{!a.unitPrice}" />
+                    </apex:column>
+    
+                    <apex:column headerValue="Date">
+                        <apex:inputField value="{!a.ServiceDate}" />
+                    </apex:column>
+    
+                    <apex:column headerValue="Line Description">
+                        <apex:inputField value="{!a.Description}" />
+                    </apex:column>
+                 
+            </apex:pageBlockTable>
+
+            <apex:pageBlockButtons location="Bottom">
+                <apex:commandButton Value="Save" action="{!save}" reRender="full" />
+                <apex:commandButton Value="Cancel" action="{!Cancel1}" reRender="full" immediate="true" />
+            </apex:pageBlockButtons>
+
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

@@ -1,0 +1,65 @@
+<apex:page sidebar="false" id="p1" controller="FilterdataClass">
+    <style>
+        .headerRow th{
+        display:none;
+        }
+    </style>   
+    <script>
+    function showChar(Ch){
+        document.getElementById('p1:f1:hd').value=Ch;
+    }
+    </script>
+    <apex:form id="f1">
+        <apex:commandLink value="ALL" onclick="showChar('ALL')" action="{!showValApex}" reRender="out" status="mystatus"/> |&nbsp;
+        <apex:commandLink value="A" onclick="showChar('A')" action="{!showValApex}" reRender="out" status="mystatus"/> |&nbsp;
+        <apex:commandLink value="B" onclick="showChar('B')" action="{!showValApex}"  reRender="out" status="mystatus"/> |&nbsp;
+        <apex:commandLink value="C" onclick="showChar('C')" action="{!showValApex}"  reRender="out" status="mystatus"/> |&nbsp;
+        <apex:commandLink value="D" onclick="showChar('D')" action="{!showValApex}"  reRender="out" status="mystatus"/> |&nbsp;
+        <apex:commandLink value="E" onclick="showChar('E')" action="{!showValApex}"  reRender="out" status="mystatus"/> |&nbsp;
+        <apex:commandLink value="F" onclick="showChar('F')" action="{!showValApex}"  reRender="out" status="mystatus"/> |&nbsp;
+        <apex:commandLink value="G" onclick="showChar('G')" action="{!showValApex}"  reRender="out" status="mystatus"/> |&nbsp;
+        <apex:commandLink value="H" onclick="showChar('H')" action="{!showValApex}"  reRender="out" status="mystatus"/> |&nbsp;
+        <apex:commandLink value="I" onclick="showChar('I')" action="{!showValApex}"  reRender="out" status="mystatus"/> |&nbsp;
+        <apex:commandLink value="J" onclick="showChar('J')" action="{!showValApex}"  reRender="out" status="mystatus"/> |&nbsp;
+        <apex:commandLink value="K" onclick="showChar('K')" action="{!showValApex}"  reRender="out" status="mystatus"/> |&nbsp;
+        <apex:commandLink value="L" onclick="showChar('L')" action="{!showValApex}"  reRender="out" status="mystatus"/> |&nbsp;
+        <apex:commandLink value="M" onclick="showChar('M')" action="{!showValApex}"  reRender="out" status="mystatus"/> |&nbsp;
+        <apex:commandLink value="N" onclick="showChar('N')" action="{!showValApex}"  reRender="out" status="mystatus"/> |&nbsp;
+        <apex:commandLink value="O" onclick="showChar('O')" action="{!showValApex}"  reRender="out" status="mystatus"/> |&nbsp;
+        <apex:commandLink value="P" onclick="showChar('P')" action="{!showValApex}"  reRender="out" status="mystatus"/> |&nbsp;
+        <apex:commandLink value="Q" onclick="showChar('Q')" action="{!showValApex}"  reRender="out" status="mystatus"/> |&nbsp;
+        <apex:commandLink value="R" onclick="showChar('R')" action="{!showValApex}"  reRender="out" status="mystatus"/> |&nbsp;
+        <apex:commandLink value="S" onclick="showChar('S')" action="{!showValApex}"  reRender="out" status="mystatus"/> |&nbsp;
+        <apex:commandLink value="T" onclick="showChar('T')" action="{!showValApex}"  reRender="out" status="mystatus"/> |&nbsp;
+        <apex:commandLink value="U" onclick="showChar('U')" action="{!showValApex}"  reRender="out" status="mystatus"/> |&nbsp;
+        <apex:commandLink value="V" onclick="showChar('V')" action="{!showValApex}"  reRender="out" status="mystatus"/> |&nbsp;
+        <apex:commandLink value="W" onclick="showChar('W')" action="{!showValApex}"  reRender="out" status="mystatus"/> |&nbsp;
+        <apex:commandLink value="X" onclick="showChar('X')" action="{!showValApex}"  reRender="out" status="mystatus"/> |&nbsp;
+        <apex:commandLink value="Y" onclick="showChar('Y')" action="{!showValApex}"  reRender="out" status="mystatus"/> |&nbsp;
+        <apex:commandLink value="Z" onclick="showChar('Z')" action="{!showValApex}"  reRender="out" status="mystatus"/> |&nbsp;
+        <apex:inputhidden value="{!hdnVal}" id="hd"/>
+        
+        <br/>
+        <apex:actionstatus id="mystatus" startText="loading data.........">
+            <apex:facet name="stop">
+                <apex:outputpanel id="out">
+                    <apex:pageBlock >
+                        <apex:pageBlockSection >
+                            <apex:pageBlockTable value="{!records}" var="r">
+                                <apex:column >
+                                    {!r.Name}
+                                </apex:column>
+                                <apex:column >
+                                    {!r.Email}
+                                </apex:column>
+                                <apex:column >
+                                    {!r.Email}
+                                </apex:column>
+                            </apex:pageBlockTable>
+                        </apex:pageBlockSection>
+                    </apex:pageBlock>
+                </apex:outputpanel>
+            </apex:facet>
+        </apex:actionstatus>
+    </apex:form>
+</apex:page>

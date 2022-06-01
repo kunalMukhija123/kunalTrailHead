@@ -1,0 +1,89 @@
+<apex:page controller="ClassController">
+  
+ <script type="text/javascript">
+        function selectAllCheckboxes(obj,receivedInputID){
+            var inputCheckBox = document.getElementsByTagName("input");                  
+            for(var i=0; i<inputCheckBox.length; i++){          
+                if(inputCheckBox[i].id.indexOf(receivedInputID)!=-1){                                     
+                    inputCheckBox[i].checked = obj.checked;
+                }
+            }
+        }
+    </script>
+    
+<apex:form >
+<apex:pageBlock title="Hello {!$User.FirstName}!">
+
+     
+</apex:pageBlock>  
+
+<apex:pageBlock title="Accounts Records">
+<apex:pageBlockSection title="Data Results -  Page #{!pageNumber}" columns="1">
+        <apex:pageBlockTable value="{!AccountList}" var="a">
+      
+     <!--    <apex:column width="10px">
+         <apex:inputCheckbox value="{!a.checked}" />     
+          
+         </apex:column>  
+       <apex:column value="{!a.acc.Name}" headerValue="Name"/>     -->
+        
+  
+
+</apex:pageBlockTable>
+<apex:pageBlockTable value="{!Accounts}" var="a" id="table" title="All Accounts">>
+
+        
+             <apex:column >
+                 <apex:facet name="header">
+                       <apex:inputCheckbox onclick="selectAllCheckboxes(this,'inputId')"/> 
+                
+                    </apex:facet>        
+                 
+                   
+                 <apex:inputCheckbox value="{!a.selected}" id="inputId" />
+          </apex:column>
+             
+         
+         <apex:column value="{!a.acc.Name}"/>
+         <apex:column value="{!a.acc.Phone}"/>
+
+        <apex:column value="{!a.acc.AccountNumber}"/>
+        <apex:column value="{!a.acc.OwnerId}"/>
+        <apex:column value="{!a.acc.TickerSymbol}"/> 
+        <apex:column value="{!a.acc.NumberOfEmployees}"/>
+        <apex:column value="{!a.acc.Rating}"/>
+        <apex:column value="{!a.acc.YearStarted}"/>
+   <!--  <apex:column value="{!a.acc.AccountSource}"/>
+         <apex:column value="{!account.AnnualRevenue}"/>
+         <apex:column value="{!account.BillingAddress}"/>   
+         <apex:column value="{!account.ShippingAddress}"/>  
+         <apex:column value="{!accrec.DandbCompany}"/>
+         <apex:column value="{!accrec.Industry}"/>
+         <apex:column style="width:50%" value="{!accrec.Phone}"/>
+         <apex:column value="{!accrec.Rating}"/>
+         <apex:column value="{!accrec.YearStarted}"/>
+          -->
+                  
+</apex:pageBlockTable>
+</apex:pageBlockSection>
+       <apex:pageBlockButtons >
+                <apex:commandButton action="{!con.first}" value="First" ></apex:commandbutton>
+                <apex:commandButton action="{!con.Previous}" value="Previous"></apex:commandbutton>
+                <apex:commandButton action="{!con.Next}" value="Next"></apex:commandbutton>
+                <apex:commandButton action="{!con.Last}" value="Last"></apex:commandbutton>
+         </apex:pageBlockButtons>    
+          
+</apex:pageBlock>   
+
+<apex:panelGrid columns="4">
+  <!--  <apex:commandLink action="{!con.first}">First</apex:commandlink>  
+    <apex:commandLink action="{!con.previous}">Previous</apex:commandlink>
+    <apex:commandLink action="{!con.next}">Next</apex:commandlink>
+    <apex:commandLink action="{!con.previous}" rendered="{!hasPrevious}">Previous</apex:commandlink>
+    <apex:commandLink action="{!con.next}" rendered="{!hasNext}">Next</apex:commandlink>   
+    <apex:commandLink action="{!con.last}">Last</apex:commandlink>     -->
+    </apex:panelGrid>
+</apex:form>
+  
+  
+</apex:page>

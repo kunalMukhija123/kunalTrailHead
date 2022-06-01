@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>MESSENGER__Order_Status__c</fullName>
+    <deprecated>false</deprecated>
+    <externalId>false</externalId>
+    <label>Order Status</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Ordered</fullName>
+                <default>false</default>
+                <label>Ordered</label>
+            </value>
+            <value>
+                <fullName>Produced</fullName>
+                <default>false</default>
+                <label>Produced</label>
+            </value>
+            <value>
+                <fullName>Storage in Branch</fullName>
+                <default>false</default>
+                <label>Storage in Branch</label>
+            </value>
+            <value>
+                <fullName>Delivery to Customer</fullName>
+                <default>false</default>
+                <label>Delivery to Customer</label>
+            </value>
+            <value>
+                <fullName>Pick Up by Customer expected</fullName>
+                <default>false</default>
+                <label>Pick Up by Customer expected</label>
+            </value>
+            <value>
+                <fullName>Delivered</fullName>
+                <default>false</default>
+                <label>Delivered</label>
+            </value>
+            <value>
+                <fullName>Complaint</fullName>
+                <default>false</default>
+                <label>Complaint</label>
+            </value>
+            <value>
+                <fullName>Invoice sent</fullName>
+                <default>false</default>
+                <label>Invoice sent</label>
+            </value>
+            <value>
+                <fullName>Invoice paid</fullName>
+                <default>false</default>
+                <label>Invoice paid</label>
+            </value>
+            <value>
+                <fullName>Closed</fullName>
+                <default>false</default>
+                <label>Closed</label>
+            </value>
+            <value>
+                <fullName>Re-Opened for Service</fullName>
+                <default>false</default>
+                <label>Re-Opened for Service</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

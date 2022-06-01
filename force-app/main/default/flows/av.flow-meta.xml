@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>49.0</apiVersion>
+    <interviewLabel>{!a}</interviewLabel>
+    <label>av</label>
+    <processType>Flow</processType>
+    <screens>
+        <name>ABC</name>
+        <label>ABC</label>
+        <locationX>224</locationX>
+        <locationY>86</locationY>
+        <allowBack>true</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>true</allowPause>
+        <showFooter>true</showFooter>
+        <showHeader>true</showHeader>
+    </screens>
+    <startElementReference>ABC</startElementReference>
+    <status>Draft</status>
+    <variables>
+        <name>a</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+</Flow>

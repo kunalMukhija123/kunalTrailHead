@@ -1,0 +1,13 @@
+<apex:page controller="updatecontact">
+    <apex:form >
+    <apex:pageblock >
+        <apex:pageBlockSection title="update contact">
+            <apex:inputField value="{!conObj.AccountID}"/>
+            <apex:inputField value="{!conObj.lastName}"/>
+            <apex:inputField value="{!conObj.firstName}"/>
+        </apex:pageBlockSection>
+        <apex:commandButton value="save" action="{!saveCon}"/>
+    </apex:pageblock>
+    </apex:form>
+  
+</apex:page>

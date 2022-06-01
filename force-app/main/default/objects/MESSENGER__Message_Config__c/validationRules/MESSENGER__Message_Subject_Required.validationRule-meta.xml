@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>MESSENGER__Message_Subject_Required</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND(TEXT( MESSENGER__Message_Type__c )== &apos;Email&apos;, ISBLANK(MESSENGER__Message_Subject__c))</errorConditionFormula>
+    <errorDisplayField>MESSENGER__Message_Subject__c</errorDisplayField>
+    <errorMessage>You have to enter Message Subject when Message Type is Email</errorMessage>
+</ValidationRule>

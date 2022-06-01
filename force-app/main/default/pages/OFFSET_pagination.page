@@ -1,0 +1,52 @@
+<apex:page controller="Offset_Pagination" >
+    <apex:form id="fid">
+        <apex:actionstatus id="counterStatus">
+            <apex:facet name="start">
+                <div class="waitingSearchDiv" id="el_loading" style="background-color: #fbfbfb; height:100%;opacity:0.65;width:100%;">
+                    <div class="waitingHolder" style="top: 100px; width: 91px;">
+                        <img class="waitingImage" src="/img/loading.gif" title="Please Wait..." />
+                        <span class="waitingDescription">Loading...</span>
+                    </div>
+                </div>
+            </apex:facet>
+        </apex:actionstatus>
+        <apex:pageBlock id="PbID" >
+            <apex:pageblockSection title="Pagination Using Offset">
+                <apex:pageBlockTable value="{!Records}" var="a" id="pbt" rendered="true">
+                    <apex:column value="{!a.FirstName}"/>
+                    <apex:column value="{!a.LastName}"/>
+                </apex:pageBlockTable>
+            </apex:pageblockSection>
+            <apex:pageBlockbuttons >
+            
+            
+                    <apex:commandButton value="<<" rerender="pbt"  action="{!First}" status="counterStatus"/>
+                    
+                    <apex:commandButton value="<" rerender="pbt"  action="{!Previous}" status="counterStatus"/>
+                    <apex:commandButton value=">" rerender="pbt"  action="{!Next}" status="counterStatus"/>
+                    <apex:commandButton value=">>" rerender="pbt"  action="{!Last}" status="counterStatus"/>
+                    
+                    
+                    
+                 
+                 
+               
+            
+      <!--      {!LastOff}
+            {!firstOff}
+            {!counter}
+                <apex:commandButton disabled="{!!LastOff}" value="<<" rerender="pbt"  action="{!First}" status="counterStatus"/>
+                    <!--   rendered="{!LastOff}" -->
+              <!--      <apex:commandButton disabled="{!!LastOff}" value="<" rerender="pbt"  action="{!Previous}" status="counterStatus"/> -->
+             <!--       <apex:commandButton disabled="{!counter <= 0}" value="<" rerender="pbt"  action="{!Previous}" status="counterStatus"/> -->
+                        <!--       rendered="{!LastOff}" -->
+                        <!-- disabled="{!prev}" -->
+                   <!--     <apex:commandButton value=">" rerender="pbt,PbID" action="{!Next}" status="counterStatus"/>  -->
+                        <!--    rendered="{!!(firstOff)}"                  disabled="{!Next}"-->
+              <!--          <apex:commandButton value=">>" disabled="{!counter <= 0}" rerender="pbt,PbID" action="{!Last}" status="counterStatus"/> -->
+                        <!--    rendered="{!!(LastOff)}" disabled="{!Next}" -->
+                    </apex:pageblockButtons> 
+                    <!--   <apex:facet name="footer">Showing Page # {!pageNumber} of {!totalPages}</apex:facet> -->  
+                </apex:pageBlock>
+            </apex:form>
+        </apex:page>

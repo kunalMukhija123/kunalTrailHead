@@ -1,0 +1,37 @@
+<apex:page standardController="account" showHeader="false"     sidebar="true" showChat="true" standardStylesheets="true">
+<apex:detail relatedList="false"/>
+<apex:relatedList list="cases"/>
+
+<apex:pageBlock title="A Block Title">
+                    {! $User.firstname & ' ' & $User.lastname}
+<apex:pageBlockSection title="A Section Title">
+<apex:image url="https://developer.salesforce.com/files/salesforce-developer-network-logo.png"/>
+         I'm three components deep!
+         <p> Today's Date is {! TODAY()} </p>
+         <p> Next week it will be {! TODAY() + 7} </p>
+         <p>The year today is {! YEAR(TODAY())}</p>
+         <p>Tomorrow will be day number {! DAY(TODAY() + 1)}</p>
+         <p>Let's find a maximum: {! MAX(1,2,3,4,5,6,5,4,3,2,1)} </p>
+<apex:pageBlockSection title="A New Section">
+<!--  <apex:outputField value="{!contact.Name}"/>
+<apex:outputField value="{!contact.phone}"/>
+<apex:outputField value="{!contact.createdById}"/>
+<apex:outputField value="{!contact.MailingStreet}"/>
+<apex:outputField value="{!contact.MailingCity}"/>
+<apex:outputField value="{!contact.MailingState}"/>
+<apex:outputField value="{!contact.MailingCountry}"/>   -->
+This is another section.
+</apex:pageBlockSection>   
+<apex:pageBlock title="Contacts here">
+   <apex:pageBlockTable value="{!Account.Opportunities}" var="con">
+   <apex:column value="{!con.account.Name}"/>
+   <apex:column value="{!con.Name}"/>
+   <apex:column value="{!con.CloseDate}"/>
+      <apex:column value="{!con.Amount}"/> 
+      <apex:column value="{!con.Discount_Percent__c}"/>
+       
+   </apex:pageBlockTable>
+</apex:pageBlock>      
+</apex:pageBlockSection>
+</apex:pageBlock>
+</apex:page>

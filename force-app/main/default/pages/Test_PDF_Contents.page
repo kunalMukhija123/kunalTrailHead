@@ -1,0 +1,83 @@
+<apex:page controller="showPro_detail"  applyHtmlTag="true" >
+    <head>
+        <script>
+        function parse_machine_description(raw_text) { //  String raw_text --- the above comment is an example of raw_text. Yes it has invisible carriage returns within the string.
+            var section_titles = raw_text.match(/^.+?:$/igm); //  Array section_titles
+            var parsed = []; //  Array of variable length
+            if (section_titles != null) { //  If matches exist (javascript converts the array to null if no matches)
+                var x = section_titles.length; //  prepare loop to iterate over array
+                while (x--) {
+                    var header = {
+                        "current": section_titles[x], //  String
+                        "next": section_titles[x + 1] //  String
+                    };
+                    
+                    var section = {
+                        "title": header.current.slice(0, -1), //  slice off ":" at the end of the current header string
+                        "content": {
+                            "raw": void 0, //  Uninitialized. This will become a string in line 24 or line 26.
+                            "left": [], //  Array of variable length
+                            "right": [] //  Array of variable length
+                        }
+                    };
+                    
+                    if (header.next !== void 0) { //  if the next header does exist
+                        section.content.raw = raw_text.slice(raw_text.indexOf(header.current) + header.current.length, raw_text.indexOf(header.next)); //  slice a substring of the raw_text, from between the current header to the beginning of the next header string.
+                    } else { //  if the next header does not exist, this means we are on the last section.
+                        section.content.raw = raw_text.slice(raw_text.indexOf(header.current) + header.current.length); //  slice a substring of the raw_text, from between the current header to the end of the string.
+                    }
+                    
+                    var per_line = section.content.raw.trim().match(/^.+$/igm); //  this divides each section (a string with the carriage returns) and trims off the white space on the ends.
+                    if (per_line == null) continue; //  if there are no matches for some reason, continue to next iteration in loop.
+                    var y = per_line.length; //  prepare loop
+                    var z = -1; //  sorry i do loops weird when i'm writing quickly
+                    while (++z < y) {
+                        var temp = per_line[z].split(/\s\s\s\s+/igm); //  some have spacing which implies a table like layout (with columns) in a massive string. this only matches a "left" and "right" side (column)
+                        var right = temp.pop(); //  String - pop off the last element in the array and set "right" to it.
+                        if (right == void 0) right = null; //  if for some reason there was no match
+                        section.content.right.push(right); //  add "right" to the array of section.content.right
+                        
+                        var left = temp.pop(); //  repeat above
+                        if (left == void 0) left = null; //  repeat above
+                        section.content.left.push(left); //  repeat above
+                    }
+                    parsed.push(section); //  add this Object section we constructed to Array parsed
+                }
+                return parsed; //  return Array of every section
+            }
+        }
+        window.onload ={
+            {!Argument} = parse_machine_description({!Argument})
+        }
+        
+        </script>
+    </head>
+    
+    
+    <apex:form >     
+        <apex:pageBlock title="Contacts">
+            <!--   <apex:pageBlockTable value="{!proList}" var="p">
+<apex:column value="{!p.Id}"/>
+<apex:column value="{!p.Name}"/>
+<apex:column value="{!p.Specification__c}"/>
+<apex:outputField value="{!p.Specification__c}" style="white-space:pre; line-height: 25px;"/>
+
+<apex:outputField value="{!pb[0].unitPrice}"/>
+</apex:pageBlockTable>    -->
+            <apex:outputText value="{!input_data}" ></apex:outputText>
+            <apex:outputText value="{!input_data}" style="white-space:pre;"></apex:outputText>
+            <!--       <apex:outputField value="{!pr.Specification__c}" style="white-space:pre; line-height: 15px;"/><br/>
+<apex:outputText value="{!pr.Specification__c}" style="white-space:pre; line-height: 30px;"></apex:outputText><br/>
+<apex:outputText value="{0, number, ###,###,###,##0.00}"><apex:param value="{!std_price}"/></apex:outputText>
+<apex:outputField value="{!pb[0].unitPrice}"/> 
+<br/>
+<apex:outputText value="{!std_price}"></apex:outputText>  -->
+            
+        </apex:pageBlock>
+        <apex:pageBlock >
+            <!--  AFTER PARSING  -->
+                <apex:outputText value="{!Argument}" escape="false"></apex:outputText>
+                
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

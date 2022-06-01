@@ -1,0 +1,133 @@
+<apex:page controller="DataTableContact">
+
+    <apex:outputPanel id="Panel">
+
+        <apex:includescript value="//code.jquery.com/jquery-1.11.1.min.js" />
+        <apex:includescript value="//cdn.datatables.net/1.10.4/js/jquery.dataTables.min.js" />
+        <apex:stylesheet value="//cdn.datatables.net/1.10.4/css/jquery.dataTables.css" />
+        <apex:includeScript value="{!URLFOR($Resource.Jquery, '/jquery-ui-1.12.1.custom/jquery-ui.min.js')}" />
+        <apex:stylesheet value="{!URLFOR($Resource.Jquery, '/jquery-ui-1.12.1.custom/jquery-ui.min.css')}" />
+        <script>
+            j$ = jQuery.noConflict();
+            j$(document).ready(function() {
+                var contactTable = j$('[id$="contactTable"]').DataTable({
+
+                });
+            });
+ 
+            
+            function showEditAccountDialog(contactId, FirstName, LastName, Email, MobilePhone) {
+                console.log('Hello !!!');
+                j$("#editAccountDialog").dialog({
+                    autoOpen: false,
+                    resizable: true,
+                    height: 240,
+                    width: 500,
+                    modal: true,
+                    title: "Edit Contact: " + FirstName + ' ' + LastName , 
+                    buttons: {
+                        Save: function() {
+                            if (j$('.' + contactId + '_fname').val() != null && (j$('.' + contactId + '_fname').val()) != 'undefined' && (j$('.' + contactId + '_fname').val()).length != 0) {
+                                FirstName = j$('.' + contactId + '_fname').val();
+                            }
+                            if (j$('.' + contactId + '_lname').val() != null && (j$('.' + contactId + '_lname').val()) != 'undefined' && (j$('.' + contactId + '_lname').val()).length != 0) {
+                                LastName = j$('.' + contactId + '_lname').val();
+                            }
+                            if (j$('.' + contactId + '_email').val() != null && (j$('.' + contactId + '_email').val()) != 'undefined' && (j$('.' + contactId + '_email').val()).length != 0) {
+                                Email = j$('.' + contactId + '_email').val();
+                            }
+                            if (j$('.' + contactId + '_Mob').val() != null && (j$('.' + contactId + '_Mob').val()) != 'undefined' && (j$('.' + contactId + '_Mob').val()).length != 0) {
+                                MobilePhone = j$('.' + contactId + '_Mob').val();
+                            }
+                            
+                            saveChanges(contactId, FirstName, LastName, Email, MobilePhone);
+                            console.log(contactId);
+                            j$(this).dialog("close");
+                        },
+                        Close: function() {
+                            j$(this).dialog("close");
+                        }
+                      
+                    }
+                });
+                j$("#editAccountDialog").html(buildEditDialogContent(contactId, FirstName, LastName, Email, MobilePhone));
+                j$("#editAccountDialog").dialog("open");
+            }
+            
+            function upload(){
+                alert('hiii');
+                uploadFileToServer();
+            }
+
+            function buildEditDialogContent(contactId, FirstName, LastName, Email, MobilePhone) {
+                if (FirstName == 'null' || FirstName.length == 0) {
+                    FirstName = '';
+                }
+                if (LastName == 'null' || LastName.length == 0) {
+                    LastName = '';
+                }
+                if (Email == 'null' || Email.length == 0) {
+                    Email = '';
+                }
+                if (MobilePhone == 'null' || MobilePhone.length == 0) {
+                    MobilePhone = '';
+                }
+
+                var dialogString = '<br />';
+                dialogString += '<form><div><b>FirstName : </b><input class="' + contactId + '_fname" type="text" value="' + FirstName + '" size="45" style="float:right" /></div><br />';
+                dialogString += '<div><b>LastName : </b><input class="' + contactId + '_lname" type="text" value="' + LastName + '" size="45" style="float:right" /></div><br />';
+                dialogString += '<div><b>Email : </b><input class="' + contactId + '_email" type="text" value="' + Email + '" size="45" style="float:right;" /></div><br /><br />';
+                dialogString += '<div><b>Mobile Number : </b><input class="' + contactId + '_Mob" type="text" value="' + MobilePhone + '" size="45" style="float:right;" /></div><br />';
+                
+                dialogString += '<div><b>Contact Photo : </b><input class="' + contactId + '_pic" type="file"  style="float:right;"/>  <input type="button" class="button" id="btnUpload" value="Upload" style="float:right;" onclick="upload();" /> </div></form>';       
+                 
+                return dialogString;
+            }
+            
+           
+        </script>
+
+        <apex:form >
+            
+            <apex:actionFunction name="uploadFileToServer" action="{!getUploadFile}" status="status" />
+            <apex:actionStatus id="status" startText="uploading........"></apex:actionStatus>
+            
+            <apex:actionFunction name="saveChanges" action="{!saveChanges}" rerender="Panel , pageMessages">
+                <apex:param name="contactToEdit" assignTo="{!contactToEdit}" value="" />
+                <apex:param name="firstnameNewValue" assignTo="{!firstnameNewValue}" value="" />
+                <apex:param name="lastnameNewValue" assignTo="{!lastnameNewValue}" value="" />
+                <apex:param name="emailNewValue" assignTo="{!emailNewValue}" value="" />
+                <apex:param name="mobileNewValue" assignTo="{!mobileNewValue}" value="" />
+            </apex:actionFunction>
+        </apex:form>
+        <apex:form >
+            <div id="editAccountDialog"> </div>
+            <h1>Contact Records</h1>
+            <table border="1" id="contactTable" title='Contact List'>
+                <thead style="background-color: #e5c130;">
+                    <tr>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>Email</th>
+                        <th>Mobile Number</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    <apex:repeat value="{!contactMap}" var="c" id="rep">
+                        <tr>
+                            <td>
+                                <div class="editAccountLink" onclick="showEditAccountDialog('{!contactMap[c].Id}' ,'{!contactMap[c].FirstName}' , '{!contactMap[c].LastName}' , '{!contactMap[c].Email}', '{!contactMap[c].MobilePhone}');"> {!contactMap[c].FirstName} </div>
+                            </td>
+                            <td>{!contactMap[c].LastName}</td>
+                            <td>{!contactMap[c].Email}</td>
+                            <td>{!contactMap[c].MobilePhone}</td>
+                        </tr>
+
+                    </apex:repeat>
+                </tbody>
+            </table>
+
+        </apex:form>
+    </apex:outputPanel>
+</apex:page>

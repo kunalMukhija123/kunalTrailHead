@@ -1,0 +1,262 @@
+<apex:page controller="showGoalsANDtasks" showHeader="false" sidebar="false">
+   <apex:form >
+   
+       <style>
+           .verticalLine {
+              border-left: thin solid #C0C0C0;
+            }
+            
+       </style>
+       
+        <apex:pageBlock >
+            
+            <apex:pageBlockButtons >
+                <apex:commandButton value="Save"/>
+                <apex:commandButton value="Cancel"/>
+                <apex:commandButton value="Email Goals to FBC"/>
+                <apex:commandButton value="Clone Goals"/>
+                <apex:commandButton value="Print"/>
+            </apex:pageBlockButtons>
+            
+            <apex:pageBlockButtons >
+                <apex:commandButton style="float : right"  value="Add Goal"/>
+            </apex:pageBlockButtons>
+            
+           <div> 
+               <div>
+                   <table border="1" bordercolor = "#C0C0C0">
+                           <tr>
+                               <th style = "margin-right: 10px"> 1.
+                               </th>
+                               
+                               <th class="verticalLine">
+                                   <apex:inputtextarea style="width:1400px ; margin-left: 10px; margin-right: 20px"/>
+                               </th>
+                               
+                               <th class="verticalLine">
+                                   <apex:commandButton value="Button"/>
+                               </th>
+                           </tr>
+                           
+                       <table border="1" bordercolor = "#C0C0C0" style="margin-left: 15px ; margin-top:10px">
+                           <tr>
+                               <th> 
+                                   Action Title
+                               </th>
+                               
+                               <th class="verticalLine">
+                                   Action Detail
+                               </th>
+                           
+                               <th class="verticalLine" >
+                                   Due Date
+                               </th>
+                           
+                               <th class="verticalLine">
+                                   Action Owner
+                               </th>
+                          
+                               <th class="verticalLine">
+                                   Completed Date
+                               </th>
+                           </tr>
+                           
+                           <tr>
+                               <td>
+                                   <apex:inputtext />
+                               </td>
+                           
+                           
+                               <td>
+                                   <apex:inputtextArea style="width:400px ; height: 100px ; margin-left: 10px"/>
+                               </td>
+                           
+                               <td>
+                                   <apex:inputtext />
+                               </td>
+                           
+                               <td>
+                                   <apex:inputtext />
+                               </td>
+                           
+                               <td>
+                                   <apex:inputtext />
+                               </td>
+                           </tr>
+                       </table>
+                   </table>
+               </div>
+               
+               <div>
+                   <table border="1" bordercolor = "#C0C0C0" style="margin-top:10px">
+                           <tr>
+                               <th> 2.
+                               </th>
+                           
+                               <th class="verticalLine">
+                               
+                               </th>
+                           
+                               <th class="verticalLine">
+                                   <apex:commandButton value="Edit"/>
+                               </th>
+                           
+                               <th class="verticalLine">
+                                   <apex:commandButton value="Button"/>
+                               </th>
+                           </tr>
+                           
+                           <table border="1" bordercolor = "#C0C0C0" style="margin-left: 15px ; margin-top:10px "> 
+                               
+
+                               <tr>
+                                   <th> 
+                                       Action Title
+                                   </th>
+                               
+                                   <th class="verticalLine">
+                                       Action Detail
+                                   </th>
+                               
+                                   <th class="verticalLine">
+                                       Due Date
+                                   </th>
+                               
+                                   <th class="verticalLine">
+                                       Action Owner
+                                   </th>
+                               
+                                   <th class="verticalLine">
+                                       Completed Date
+                                   </th>
+                               
+                                   <th class="verticalLine">
+                                       
+                                   </th>
+                               
+                                   <th class="verticalLine">
+                                       
+                                   </th>
+                               </tr>
+                               <apex:repeat var="task" value="{!taskList}">
+                               <tr>
+                                   
+                                   <td>
+                                       <apex:outputText value="{!task.Id}"/>
+                                   </td>
+                               
+                                   <td>
+                                       <apex:inputtextArea style="width:400px ;  margin-left: 10px"/>
+                                   </td>
+                               
+                                   <td>
+                                       <apex:outputText value="{!task.Activitydate}"/>
+                                   </td>
+                               
+                                   <td>
+                                       <apex:outputText />
+                                   </td>
+                               
+                                   <td>
+                                       <apex:outputText />
+                                   </td>
+                               
+                                   <td>
+                                       <apex:commandLink value="Edit"/> 
+                                   </td>
+                               
+                                   <td>
+                                       <apex:commandLink value="Button"/> 
+                                   </td>
+                               </tr>
+                               </apex:repeat>
+                           </table>
+                   </table>
+               </div>
+               
+               <div>
+                   <table border="1" bordercolor = "#C0C0C0" style="margin-top:10px">
+                           <tr>
+                               <th> 3.
+                               </th>
+                           
+                               <th class="verticalLine">
+                                   Here is the Name of goal: goal statement
+                               </th>
+                           
+                               <th class="verticalLine">
+                                   <apex:commandButton value="Edit"/>
+                               </th>
+                           
+                               <th class="verticalLine">
+                                   <apex:commandButton value="Button"/>
+                               </th>
+                           </tr>
+                           
+                           <table border="1" bordercolor = "#C0C0C0" style="margin-left: 15px ; margin-top:10px ">
+                               <tr>
+                                   <th > 
+                                       Action Title
+                                   </th>
+                               
+                                   <th class="verticalLine">
+                                       Action Detail
+                                   </th>
+                               
+                                   <th class="verticalLine">
+                                       Due Date
+                                   </th>
+                               
+                                   <th class="verticalLine">
+                                       Action Owner
+                                   </th>
+                               
+                                   <th class="verticalLine">
+                                       Completed Date
+                                   </th>
+                               
+                                   <th class="verticalLine">
+                                       
+                                   </th>
+                               
+                                   <th class="verticalLine">
+                                       
+                                   </th>
+                               </tr>
+                           
+                               <tr>
+                                   <td>
+                                       <apex:inputtext />
+                                   </td>
+                               
+                                   <td>
+                                       <apex:inputtextArea style="width:400px ;  margin-left: 10px"/>
+                                   </td>
+                               
+                                   <td>
+                                       <apex:inputtext />
+                                   </td>
+                               
+                                   <td>
+                                       <apex:inputtext />
+                                   </td>
+                               
+                                   <td>
+                                       <apex:inputtext />
+                                   </td>
+                               
+                                   <td>
+                                       <apex:commandLink value="Edit"/> 
+                                   </td>
+                               
+                                   <td>
+                                       <apex:commandLink value="Button"/> 
+                                   </td>
+                               </tr>
+                           </table>
+                   </table>
+               </div>
+           </div>            
+         </apex:pageBlock> 
+     </apex:form>       
+</apex:page>

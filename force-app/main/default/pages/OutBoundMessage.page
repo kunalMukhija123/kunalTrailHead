@@ -1,0 +1,23 @@
+<apex:page Controller="GetLookupRecordId" tabStyle="Contact">
+    <apex:form >
+        <apex:pageBlock title="Send Email Message">
+            <!--         <apex:pageMessages id='msg'/>   -->
+            <apex:pageBlockSection columns="1" id="pbs">
+                <apex:pageBlockSectionItem labelTitle="Contact">
+                    <apex:outputLabel >Contact Name</apex:outputLabel>
+                    <apex:inputField value="{!con.ReportsToID}" />
+                </apex:pageBlockSectionItem>
+
+                <apex:inputText label="Subject" value="{!Subject}" maxlength="100" />
+                <apex:outputLabel style="margin-left: 20px;"> Message Body: </apex:outputLabel>
+                <apex:inputTextarea value="{!emailBody}" rows="10" cols="100" />
+
+            </apex:pageBlockSection>
+
+            <apex:pageBlockButtons location="Bottom">
+                <apex:commandButton value=" Send " action="{!SendEmail}" />
+                <apex:commandButton value=" Cancel " />
+            </apex:pageBlockButtons>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

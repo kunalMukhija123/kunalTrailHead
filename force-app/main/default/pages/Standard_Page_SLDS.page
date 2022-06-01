@@ -1,0 +1,69 @@
+<apex:page standardController="Account" showHeader="false" sidebar="false">
+    <apex:stylesheet value="{!URLFOR($Resource.Lightning, 'assets/styles/salesforce-lightning-design-system.css')}" />
+    <apex:form styleClass="slds">
+        <apex:sectionHeader >
+            <apex:pageBlock >
+                <apex:pageBlockSection >
+
+                    <div class="slds-page-header">
+                        <div class="slds-grid slds-wrap">
+                            <div class="slds-col slds-has-flexi-truncate slds-size--1-of-1 slds-medium-size--3-of-4">
+                                <div class="slds-media slds-no-space slds-grow">
+                                    <div class="slds-media__figure">
+                                        <svg class="slds-icon slds-icon-standard-user" aria-hidden="true">
+                                  <!--          <use xlink:href="/assets/icons/standard-sprite/svg/symbols.svg#user"></use>  -->
+                                          </svg>
+                                    </div>
+                                    <div class="slds-media__body">
+                                        <p class="slds-text-title--caps slds-line-height--reset"></p>
+                                        <h1 class="slds-page-header__title slds-m-right--small slds-align-middle slds-truncate" title="this should match the Record Title">{!Account.Name} </h1>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!--           <div class="slds-grid slds-wrap">      -->
+                            <div class="slds-button-group" role="group">
+                                <button class="slds-button slds-button--neutral">Edit</button>
+                                <button class="slds-button slds-button--neutral">Save</button>
+                                <button class="slds-button slds-button--neutral">Cancel</button>
+                                <button class="slds-button slds-button--neutral">Clone</button>
+                            </div>
+
+                            <div class="slds-grid slds-wrap">
+                                <ul class="slds-grid slds-page-header__detail-row ">
+                                    <li class="slds-page-header__detail-block">
+                                        <p class="slds-text-title slds-truncate slds-m-bottom--xx-small" title="Field 1"> Account Name</p>
+                                        <p class="slds-text-body--regular slds-truncate" title="Description that demonstrates truncation with a long text field">{!Account.Name}.</p>
+                                    </li>
+
+                                    <li class="slds-page-header__detail-block">
+                                        <p class="slds-text-title slds-truncate slds-m-bottom--xx-small" title="Field 2">Account Number</p>
+                                        <p class="slds-text-body--regular slds-truncate">{!Account.AccountNumber}</p>
+                                    </li>
+                                    <li class="slds-page-header__detail-block">
+                                        <p class="slds-text-title slds-truncate slds-m-bottom--xx-small" title="Field 3">Fax</p>
+                                        <a href="javascript:void(0);">{!Account.Fax}</a>
+                                    </li>
+                                    <li class="slds-page-header__detail-block">
+                                        <p class="slds-text-title slds-truncate slds-m-bottom--xx-small" title="Field 4">Phone</p>
+                                        <p class="slds-text-body--regular slds-truncate">{!Account.phone}</p>
+                                    </li>
+                                </ul>
+                            </div>
+                            <!--          </div>  -->
+                        </div>
+                    </div>
+
+                    <div class="slds-grid slds-wrap">
+                        <div class="slds-col slds-size--1-of-1 slds-medium-size--3-of-4">
+                            ...
+                        </div>
+                        <div class="slds-col slds-size--1-of-1 slds-medium-size--1-of-4">
+                            ...
+                        </div>
+                    </div>
+                </apex:pageBlockSection>
+            </apex:pageBlock>
+        </apex:sectionHeader>
+    </apex:form>
+</apex:page>

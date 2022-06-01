@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebLink xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Appshark_LC1__Convert_Selected_Leads</fullName>
+    <availability>online</availability>
+    <description>used to convert selected leads of a list view</description>
+    <displayType>massActionButton</displayType>
+    <linkType>javascript</linkType>
+    <masterLabel>Convert Selected Leads</masterLabel>
+    <openType>onClickJavaScript</openType>
+    <protected>false</protected>
+    <requireRowSelection>true</requireRowSelection>
+    <url>var dataRowTables = document.getElementsByClassName(&apos;x-grid3-row-table&apos;);
+var selectedLeads = [];
+if( dataRowTables  )
+{
+  for( var tbl in dataRowTables  )
+  {
+	if( dataRowTables[tbl] &amp;&amp; dataRowTables[tbl].rows &amp;&amp; dataRowTables[tbl].rows[0].cells )
+	{
+		var chBoxes = dataRowTables[tbl].rows[0].cells[0].getElementsByTagName(&apos;input&apos;);
+		if( chBoxes &amp;&amp; chBoxes[0] &amp;&amp; chBoxes[0].checked )
+		{
+			selectedLeads.push(chBoxes[0].id);
+		}
+	}
+  }
+}
+if( selectedLeads.length &gt; 0 )
+{
+	var createOpportunity = confirm(&apos;Do you want to create opportunity upon conversion?&apos;);
+	//console.log(selectedLeads);
+	var leadIds = &apos;&apos;;
+	for( var lId in selectedLeads)
+		leadIds += selectedLeads[lId]+&apos;;&apos;;
+	 //var status = sforce.apex.execute(&quot;Appshark_LC1.BulkLeadConversion&quot;,&quot;invokeLeadConvertProcess&quot;,{leadIds:leadIds,createOpportunity:createOpportunity});
+	 window.open(&apos;/apex/Appshark_LC1__BulkLeadConversion?lIds=&apos;+leadIds+&apos;&amp;lvInfo=&apos;+createOpportunity, &quot;&quot;, &quot;top=100, left=100, width=300, height=300&quot;);
+}
+else
+{
+	alert(&apos;Please select atleast one Lead&apos;);
+}</url>
+</WebLink>

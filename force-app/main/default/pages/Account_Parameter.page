@@ -1,0 +1,27 @@
+<apex:page standardController="Account" recordSetVar="acts" sidebar="false">
+<apex:form >
+    <apex:pageBlock title="Selected Account want to view">
+        <apex:pageBlockSection >
+            <apex:pageBlockTable value="{!acts}" var="a">
+                <apex:column headerValue="Name">
+                    <apex:commandLink reRender="pbs">
+                        {!a.Name}     <apex:param value="{!a.Id}" name="AccountId"/>
+                                      <apex:param value="{!a.Name}" name="AccountName"/>
+                    </apex:commandLink>
+                </apex:column>
+                
+                <apex:column value="{!a.type}"/>
+                <apex:column value="{!a.industry}"/>
+                <apex:column value="{!a.phone}"/>
+                <apex:column value="{!a.Fax}"/>
+            </apex:pageBlockTable>
+            
+            <apex:pageBlockSection columns="1" title="{!$CurrentPage.parameters.AccountName}" collapsible="false" id="pbs">
+                <apex:detail relatedList="false" subject="{!$CurrentPage.parameters.accountId}"/>
+            </apex:pageBlockSection>
+        </apex:pageblockSection>
+            
+    </apex:pageBlock>
+</apex:form>
+  
+</apex:page>

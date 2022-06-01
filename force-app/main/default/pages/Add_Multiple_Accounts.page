@@ -1,0 +1,15 @@
+<apex:page controller="AddMultipleAccountsController" sidebar="false" >
+<apex:form >
+<apex:pageBlock >
+<apex:pageblocktable value="{!ListAccount}" var="a">
+<apex:column headerValue="Account Name">
+<apex:inputfield value="{!a.Name}"/>
+</apex:column>
+
+<apex:column headerValue="Account Number">
+<apex:inputfield value="{!a.AccountNumber}"/>
+</apex:column>
+</apex:pageblocktable>
+</apex:pageBlock>
+</apex:form>
+</apex:page>

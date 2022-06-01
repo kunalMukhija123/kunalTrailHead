@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebLink xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>MESSENGER__SendMessage</fullName>
+    <availability>online</availability>
+    <displayType>massActionButton</displayType>
+    <linkType>javascript</linkType>
+    <masterLabel>Send Message</masterLabel>
+    <openType>onClickJavaScript</openType>
+    <protected>false</protected>
+    <requireRowSelection>true</requireRowSelection>
+    <url>{!REQUIRESCRIPT(&apos;/soap/ajax/35.0/connection.js&apos;)} 
+{!REQUIRESCRIPT(&apos;/soap/ajax/35.0/apex.js&apos;)} 
+
+var records = {!GETRECORDIDS($ObjectType.Contact)}; 
+var ConRecorIds= &quot;&quot;; 
+var comma = &quot;&quot;; 
+
+if(records[0] == null) { 
+alert(&quot;Please select at least one record to send message.&quot;); 
+}else if(records[100] !=null) { 
+alert(&quot;You can not select more than 100 records to perform bulk messaging.&quot;); 
+}else{ 
+for(i = 0; i &lt; records.length; i++) { 
+ConRecorIds += comma + records[i]; 
+comma = &quot;,&quot;; 
+} 
+window.location = &apos;/apex/MESSENGER__SendNewMessage?id=&apos; + ConRecorIds; 
+}</url>
+</WebLink>

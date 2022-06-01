@@ -1,0 +1,27 @@
+<apex:page id="myPage" controller="InputfieldDemoController">
+    <!-- Include JQuery in the page -->
+    <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+    
+     <!-- JS function from which you want to pass the variable-->
+    <script>
+    function sendVariable(parameter , parameter1){
+    jQuery('[id$=myHiddenValue]').val(parameter);
+    jQuery('[id$=myHiddenValue1]').val(parameter1);
+    passValueToController();
+       console.log(jQuery('[id$=myHiddenValue]').val());
+       console.log(jQuery('[id$=myHiddenValue1]').val());
+    }
+    </script>
+    
+    <apex:form >
+    <!-- Declare a hidden field and bind it to required variable in controller using value attribute -->
+    <apex:inputHidden value="{!valuefromJS}" id="myHiddenValue"/>
+    <apex:inputHidden value="{!valuefromJS1}" id="myHiddenValue1"/>
+    
+    <!-- Action function for the rerendering the hidden variable-->
+    <apex:actionFunction name="passValueToController" action="{!someMethod}" rerender="myHiddenValue , myHiddenValue1"/>
+           
+    <!-- Command button to set the value -->
+    <apex:commandButton value="Set Value" onclick="sendVariable('new value','oldValue'); return false;" />
+    </apex:form>
+</apex:page>

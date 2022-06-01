@@ -1,0 +1,17 @@
+<apex:page standardController="account">
+  <apex:includeLightning />
+    
+    <div id="helloWorld" />
+    <script>
+    var getId = "{!$CurrentPage.parameters.Id}" ;
+   // alert(getId);
+        $Lightning.use("c:CreateContact", function()
+        {
+            $Lightning.createComponent("c:createContacts",
+            {
+             recordId : getId
+            }, "helloWorld", function(cmp){});
+            
+        });
+    </script>
+</apex:page>

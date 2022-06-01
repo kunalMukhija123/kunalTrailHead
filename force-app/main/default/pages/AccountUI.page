@@ -1,0 +1,42 @@
+<apex:page controller="dataTableAccount">
+<script>
+    function showEditAccountDialog(accountId, accountName, numberOfEmployees){  
+      $( "#editAccountDialog" ).dialog({  
+           autoOpen: false,  
+           resizable: true,  
+           height: 240,  
+           width: 500,  
+           modal: true,  
+           title: "Edit Account: " + accountName,  
+           buttons:{  
+                Save : function() {  
+                     if($('.' + accountId + '_name').val() != null ){  
+                          accountName = $('.' + accountId + '_name').val();  
+                     }  
+                     if($('.' + accountId + '_num').val() != null ){  
+                          Accountnumber = $('.' + accountId + '_num').val();  
+                     }                    
+                     saveChanges(accountId, accountName, numberOfEmployees);   
+                     $(this).dialog("close");  
+                     },  
+                    Close : function(){  
+                         $(this).dialog("close");  
+                    }  
+               }  
+      });  
+      $( "#editAccountDialog" ).html(buildEditDialogContent(accountId, accountName, Accountnumber));  
+      $( "#editAccountDialog" ).dialog( "open" );  
+ }    
+</script>
+    <apex:pageBlock >
+        <apex:pageblockTable value="{!accounts}" var="a">
+  <apex:column headerValue="Edit Account">  
+                  <span class="editAccountLink" onclick="showEditAccountDialog('{!a.Id}', '{!a.Name}', '{!a.AccountNumber}');" >edit</span>  
+             </apex:column>     
+             <apex:column value="{!a.Name}"/>
+             <apex:column value="{!a.AccountNumber}"/>
+             
+
+        </apex:pageblockTable>
+    </apex:pageBlock>
+</apex:page>

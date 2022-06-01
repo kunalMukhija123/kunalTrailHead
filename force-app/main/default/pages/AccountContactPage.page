@@ -1,0 +1,54 @@
+<apex:page controller="AccountContactsController" sidebar="true"> 
+
+<apex:form > 
+    <apex:actionFunction name="refreshPage"  reRender="ret" status="counterStatus"/>
+        <apex:actionstatus id="counterStatus">
+        <apex:facet name="start">
+            <div class="waitingSearchDiv" id="el_loading" style="background-color: #fbfbfb; height:100%;opacity:0.65;width:100%;">
+                <div class="waitingHolder" style="top: 100px; width: 91px;">
+                <img class="waitingImage" src="/img/loading.gif" title="Please Wait..." />
+                <span class="waitingDescription">Loading...</span>
+                </div>
+            </div>
+        </apex:facet>
+    </apex:actionstatus>
+    
+<apex:pageblock title="All Contacts" id="ret">
+   
+        <apex:pageBlockTable value="{!ConWrapList}" var="cw"   >
+               
+        <apex:column >
+              <apex:facet name="header" > 
+                       <apex:inputCheckbox />
+              </apex:facet>
+              <apex:inputCheckbox value="{!cw.isSelected}" onClick="refreshPage();"/>
+        </apex:column>
+        
+        <apex:column headerValue="First Name">
+              <apex:outputField value="{!cw.conObj.FirstName}" rendered="{!!cw.isSelected}" />
+              <apex:inputField value="{!cw.conObj.FirstName}" rendered="{!cw.isSelected}" />
+        </apex:column>
+        
+        <apex:column headerValue="Last Name">
+            <apex:outputField value="{!cw.conObj.LastName}" rendered="{!!cw.isSelected}"/>
+            <apex:inputField value="{!cw.conObj.LastName}" rendered="{!cw.isSelected}" />
+        </apex:column>
+        
+        <apex:column headerValue="Email">
+             <apex:outputField value="{!cw.conObj.Email}" rendered="{!!cw.isSelected}" />
+             <apex:inputField value="{!cw.conObj.Email}" rendered="{!cw.isSelected}" />
+         </apex:column>
+       </apex:pageBlockTable>
+  
+    
+    <apex:pageBlockButtons >
+   
+        <apex:commandButton value="UPDATE" action="{!save}" reRender="ret" status="counterStatus" />
+        <apex:commandButton value="DELETE" action="{!Del}" reRender="ret" status="counterStatus"/>
+       
+    </apex:pageBlockButtons>
+
+</apex:pageblock>
+
+</apex:form>
+</apex:page>

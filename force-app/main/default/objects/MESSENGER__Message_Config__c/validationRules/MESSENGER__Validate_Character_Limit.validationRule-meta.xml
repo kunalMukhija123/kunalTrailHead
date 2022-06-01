@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>MESSENGER__Validate_Character_Limit</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND(OR(TEXT( MESSENGER__Message_Type__c )== &apos;SMS&apos;,TEXT( MESSENGER__Message_Type__c) == &apos;Voice Message&apos;),LEN(MESSENGER__Message_Body__c)&gt;160)</errorConditionFormula>
+    <errorDisplayField>MESSENGER__Message_Body__c</errorDisplayField>
+    <errorMessage>You can&apos;t enter more than 160 characters when message type is SMS or Voice Message</errorMessage>
+</ValidationRule>

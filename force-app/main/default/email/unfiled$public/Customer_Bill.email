@@ -1,0 +1,14 @@
+<table border="0" cellpadding="5" width="600" cellspacing="5" height="400" >
+<tr valign="top" height="50" >
+<td tEditID="c1r1" style=" background-color:#FFFFFF; bEditID:r3st1; color:#000000; bLabel:main; font-size:12pt; font-family:arial;" aEditID="c1r1" locked="0" >
+<![CDATA[Hi &nbsp;{!Customer__c.Name} ,]]></td>
+</tr>
+<tr valign="top" height="300" >
+<td tEditID="c1r2" style=" background-color:#FFFFFF; bEditID:r3st1; color:#000000; bLabel:main; font-size:12pt; font-family:arial;" aEditID="c1r2" locked="0" >
+<![CDATA[<div style="color: rgb(0, 0, 0); font-family: arial; font-size: 12pt;">Thanks for visiting in our " SMG " Hotel and&nbsp;<span style="font-size: 12pt;">Please Make Payment that is mentioned below :</span></div><div style="color: rgb(0, 0, 0); font-family: arial; font-size: 12pt;"><span style="font-size: 12pt;"><br></span></div><div><span style="color: rgb(0, 0, 0); font-family: arial; font-size: 12pt;">Customer Name :&nbsp;</span><font face="arial">{!Customer__c.Name}</font></div><div><span style="color: rgb(0, 0, 0); font-family: arial; font-size: 12pt;">Billing Amount &nbsp;:&nbsp;</span><font face="arial">{!Booking__c.Amount__c}</font></div><div><div style="font-family: arial; font-size: 16px;"><span style="font-size: 12pt;">Your room_no. is :&nbsp;</span><span class="m_2167749656145345506Apple-tab-span" style="font-size: 12pt; white-space: pre-wrap;">    {!Booking__c.Room_No__c}</span></div><div style="font-family: arial; font-size: 12pt;">Your check_in date is : &nbsp; &nbsp;{!Booking__c.Check_In_Time__c}</div><div style="font-family: arial; font-size: 12pt;">Your check_out date is : &nbsp;{!Booking__c.Check_Out_Time__c}</div><div style="font-family: arial; font-size: 12pt;">Total Hours :&nbsp;{!Booking__c.Total_Hours__c}</div></div><div style="color: rgb(0, 0, 0); font-family: arial; font-size: 12pt;"><span style="font-size: 12pt;"><br></span></div><div style="color: rgb(0, 0, 0); font-family: arial; font-size: 12pt;"><span style="font-size: 12pt;">Please Make Payment !!!</span></div><div style="color: rgb(0, 0, 0); font-family: arial; font-size: 12pt;"><br></div><div style="color: rgb(0, 0, 0); font-family: arial; font-size: 12pt;"><div>Thank You &nbsp;!!!</div><div><br></div><div><br><div><br></div><div><br></div><div><br></div></div></div>]]></td>
+</tr>
+<tr valign="top" height="50" >
+<td tEditID="c1r3" style=" background-color:#FFFFFF; bEditID:r3st1; color:#000000; bLabel:main; font-size:12pt; font-family:arial;" aEditID="c1r3" locked="0" >
+<![CDATA[]]></td>
+</tr>
+</table>

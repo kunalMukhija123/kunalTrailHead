@@ -1,0 +1,110 @@
+<apex:page standardController="Campaign" recordSetVar="Campaigns" extensions="ChangeOwnerCtrl" docType="html-5.0">
+   <html xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" lang="en">
+      <head>
+         <title>Change Owner</title>
+         <meta charset="utf-8" />
+         <meta name="viewport" content="width=device-width, initial-scale=1" />
+         <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" />
+         <apex:includescript value="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" />
+         
+         <apex:includescript value="https://code.jquery.com/ui/1.12.1/jquery-ui.js" />
+         <apex:slds />
+         <style>
+            .lookupInput{
+               display: flex;
+            }
+            .lookupInput a img{
+               display: none;
+            }
+            
+            .lookupInput a:hover, .lookupInput a:focus, .lookupInput a:active{
+               background-color: transparent !important;
+               border: none;
+               box-shadow: none;    
+            }
+            #pagewrapper{
+               max-width: 550px;
+               margin: 1rem auto;
+            }
+            #pagewrapper .inputname select{
+               display: none;
+            }
+            #pagewrapper .slds-card__header{
+               background: #f6f6f6;
+               padding-bottom: 0.75rem;
+            }
+            #pagewrapper .slds-form-element__label{
+               font-size: .85rem;
+            }
+         </style>
+         
+      </head>
+      <body>
+         <div class="slds-scope" id="pagewrapper">
+            <apex:form id="formId">
+               <div class="slds-card">
+                  <div class="slds-card__header slds-grid">
+                     <header class="slds-media slds-media_center slds-has-flexi-truncate">
+                        <div class="slds-media__body">
+                           <h2 class="slds-card__header-title">
+                              Change Owner
+                           </h2>
+                        </div>
+                     </header>
+                  </div>
+                  <div class="slds-card__body slds-col_padded" style="    padding-left: 1rem;">
+                     <apex:pageMessages />
+                     <div class="slds-form-element inputname slds-m-top_medium slds-m-bottom_large" >
+                        <label class="slds-form-element__label slds-m-bottom_xx-smal" for="form-element-01">Choose Owner</label>
+                        <div class="slds-form-element__control">
+                           <apex:inputField value="{!objOpportunity.OwnerId}" styleClass="OwnerList"/> 
+                           <!--<input type="text" name="list" id="OwnerList" />
+                           <apex:input value="{!ownerId}" id="OwnerList"/>-->
+                        </div>
+                     </div>
+                     
+                     <div class="slds-form-element slds-m-top_medium slds-m-bottom_large">
+                      <div class="slds-form-element__control">
+                        <div class="slds-checkbox">
+                          <apex:inputCheckbox value="{!selectedCheckBox}" id="checkboxId"/>
+                          <!-- <input type="checkbox" name="options" id="checkbox-2" value="checkbox-2" /> -->
+                          <label class="slds-checkbox__label" for="{!$Component.checkboxId}">
+                            <span class="slds-checkbox_faux"></span>
+                            <span class="slds-form-element__label">Click the checkbox if you want to change the owner of all related tasks</span>
+                          </label>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <footer class="slds-card__footer slds-align_absolute-right">
+                     <apex:commandButton value="Cancel" styleClass="slds-button slds-button_neutral" action="{!cancel}"/>
+                     <apex:commandButton value="Change Owner" styleClass="slds-button slds-button_brand" action="{!changeOwner}" reRender="formId"/>
+                  </footer>
+               </div>
+
+               <script>
+                  $(function(){
+                     $('#pagewrapper .inputname input').addClass('slds-input');
+                     var jsonData =[];
+                     var jasonVal = {!jsonString};
+                     
+                     $.each(jasonVal, function( index, value ) {
+                       jsonData.push(value['text']);
+                     });
+                     
+                     //on Document ready
+                     
+                        $(".OwnerList").autocomplete({
+                           source : jsonData
+                        });
+                     
+
+                  })
+
+               </script>
+            </apex:form>      
+         </div>
+         
+      </body>
+   </html>
+</apex:page>

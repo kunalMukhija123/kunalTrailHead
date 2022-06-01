@@ -1,0 +1,9 @@
+<apex:page controller="pocFormController" showHeader="false" sidebar="false" lightningStylesheets="true">
+    <apex:form >
+        <apex:outputLabel value="Fill the Registration Form"></apex:outputLabel><br/>
+        <apex:outputLabel value="First Name"></apex:outputLabel><br/>
+        <apex:outputLabel value="Last Name"></apex:outputLabel><br/>
+        <apex:outputLabel value="Email"></apex:outputLabel><br/>
+        <apex:commandButton value="Save" action="{!saveForm}"/>
+    </apex:form>
+</apex:page>

@@ -1,0 +1,12 @@
+<apex:page standardController="Document" extensions="CapturePhoto" standardStylesheets="false" showHeader="false">
+    <apex:form id="theForm">
+        <apex:pageBlock >
+            <apex:pageBlockButtons >
+                <apex:commandButton value="Save" action="{!savePhoto}" status="status"/>
+            </apex:pageBlockButtons>
+            <apex:pageBlockSection >
+                <apex:inputFile value="{!cont.VersionData}" fileName="{!cont.Title}" accept="image/*;capture=camera"/>
+            </apex:pageBlockSection>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

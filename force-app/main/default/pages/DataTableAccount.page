@@ -1,0 +1,12 @@
+<apex:page controller="dataTableAccount">
+
+    <apex:pageBlock title="Account Records">
+        <apex:pageBlockTable value="{!accountMap}" var="M">
+            
+                 
+                  <apex:column value="{!accountMap[M].Name}" />
+              
+        </apex:pageBlockTable>
+    </apex:pageBlock>
+
+</apex:page>

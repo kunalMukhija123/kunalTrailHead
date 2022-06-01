@@ -1,0 +1,14 @@
+<apex:page standardController="Contact">
+<apex:sectionHeader title="Contact Edit" subtitle="New Member" />
+<apex:form >
+
+<apex:pageBlock title="Rules of SFDC99" mode="edit">
+
+
+<apex:pageBlockButtons location="bottom">
+        <apex:commandButton value="Add SFDC99 Member" action="{!save}" />
+        <apex:commandLink value="Back to SFDC99" target="http://www.sfdc99.com" />
+      </apex:pageBlockButtons>
+</apex:pageBlock>
+</apex:form>
+</apex:page>

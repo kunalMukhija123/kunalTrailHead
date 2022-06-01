@@ -1,0 +1,45 @@
+<apex:page standardController="Account" extensions="CheckAllUsingJavascriptExtension" >
+<apex:form >
+<apex:pageBlock title="Hello {!$User.FirstName}!">
+
+</apex:pageBlock>
+
+<apex:pageBlock title="Accounts Records">
+<apex:pageBlockTable value="{!AccountList}" var="accrec">
+         
+       <!--     <apex:column >
+                 <apex:facet name="header">
+                        <apex:inputCheckbox onclick="selectAllCheckboxes(this,'inputId')"/>
+                    </apex:facet>
+                    
+                  <apex:inputCheckbox value="{!account.selected}" id="inputId"/> 
+                    
+                    <apex:inputCheckbox />
+                </apex:column>
+          
+         <apex:column value="{!accrec.Account.Name}"/>
+         <apex:column value="{!accrec.Account.AccountNumber}"/>
+         <apex:column value="{!accrec.Account.OwnerId}"/>
+         <apex:column value="{!accrec.Account.Site}"/>
+         
+          -->
+         
+         
+        <!-- <apex:column value="{!account.AccountSource}"/>
+         <apex:column value="{!account.AnnualRevenue}"/>
+         <apex:column value="{!account.BillingAddress}"/>   
+         <apex:column value="{!account.ShippingAddress}"/>  
+         <apex:column value="{!accrec.DandbCompany}"/>
+         <apex:column value="{!accrec.NumberOfEmployees}"/>
+         <apex:column value="{!accrec.Industry}"/>
+         <apex:column style="width:50%" value="{!accrec.Phone}"/>
+         <apex:column value="{!accrec.Rating}"/>
+         <apex:column value="{!accrec.YearStarted}"/>
+         <apex:column value="{!accrec.TickerSymbol}"/>    -->
+         
+         
+</apex:pageBlockTable>
+
+</apex:pageBlock>
+</apex:form>
+</apex:page>

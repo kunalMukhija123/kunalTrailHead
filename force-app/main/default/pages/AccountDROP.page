@@ -1,0 +1,13 @@
+<apex:page controller="AccountController">
+<apex:form >
+   <apex:pageBlock >
+     <apex:pageBlockSection title="Select the Account" >
+         <apex:OutputPanel >
+              <apex:selectList value="{!selectedaccountId}" size="1" multiselect="false"  >
+                  <apex:selectOptions value="{!ListOfAccounts}" />
+               </apex:selectList>
+          </apex:OutputPanel>
+      </apex:pageBlockSection>
+  </apex:pageBlock>
+</apex:form>
+</apex:page>
