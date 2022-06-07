@@ -1,5 +1,5 @@
 @istest
-Public class testCreateContactFrmEmail{
+Public class testCreateContactFrmEmail {
 
     static testMethod void testCreateContactFrmEmail() {
         Messaging.InboundEmail email = new Messaging.InboundEmail() ;
