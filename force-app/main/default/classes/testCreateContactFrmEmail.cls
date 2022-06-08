@@ -7,8 +7,7 @@ Public class testCreateContactFrmEmail {
     
         email.subject = 'Create Contact';
         email.plainTextBody = 'FromEmail';
-        env.fromAddress = 'ilovenagpur@gmail.com';
-    
+        env.fromAddress = 'ilovenagpur@gmail.com';    
         CreateContactFrmEmail creatC = new CreateContactFrmEmail();
         creatC.handleInboundEmail(email, env );
     }
