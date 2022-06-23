@@ -4,7 +4,6 @@ public class accAmountHandlerController {
         set<Id> accIds = new set<Id>();
         for(contact con : conList){
             accIds.add(con.accountId);
-            system.debug('-----acc IDs ---- ' +accIds);  
         }  
         
         if (accIds.size() > 0) {
