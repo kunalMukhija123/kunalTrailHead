@@ -8,6 +8,5 @@ public class AccountFieldSetController {
         }
         queryString += ' FROM Account LIMIT 5';         
         acclist = Database.query(queryString);
-        
     }     
 }
