@@ -7,6 +7,7 @@ public class AccountFieldSetController {
             queryString += ', ' + fld.getFieldPath();
         }
         queryString += ' FROM Account LIMIT 5';         
-        acclist = Database.query(queryString);          
+        acclist = Database.query(queryString); 
+        System.debug('--11---');         
     }     
 }
