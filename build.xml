@@ -5,10 +5,15 @@
   
   <!--Deploy the unpackaged set of metadata retrieved with retrieveUnpackaged and run tests in this organizations namespace only -->
   
-  <target name="deployall">
+  <!--<target name="deployall">
     
   <sf:deploy username="${sf.username}" password="${sf.password}" serverurl="${sf.serverurl}" testlevel="NoTestRun" logtype="Detail" deployRoot="force-app"/>
   
+  </target> -->
+
+  <target name="deployJob">
+    <!-- Upload the contents of the deployJob workspace, running all local tests -->
+    <sf:deploy username="${sf.username}" password="${sf.password}" serverurl="${sf.serverurl}" deployRoot="/var/lib/jenkins/workspace/deployJob/force-app" testLevel="RunLocalTests" rollbackOnError="true" />
   </target>
   
   </project>
