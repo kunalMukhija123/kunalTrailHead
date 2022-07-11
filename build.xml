@@ -7,7 +7,7 @@
   
   <target name="deployall">
     
-  <sf:deploy username="${sf.username}" password="${sf.password}" serverurl="${sf.serverurl}" testlevel="NoTestRun" logtype="Detail" deployRoot="force-app\main\default"/>
+  <sf:deploy username="${sf.username}" password="${sf.password}" serverurl="${sf.serverurl}" testlevel="NoTestRun" logtype="Detail" deployRoot="force-app"/>
   
   </target>
   
