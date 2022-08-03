@@ -16,5 +16,5 @@ pipelines:
          name: Salesforce Auth
          script:  
             - sfdx --version
-            - sfdx force:auth:jwt:grant -f certificate/server.key.key -i $SALESFORCE_CONSUMER_KEY -u $salesforceDevOrgUserName -d -s -r $SFDC_PROD_URL
+            - sfdx force:auth:jwt:grant -f certificate/server.key -i $SALESFORCE_CONSUMER_KEY -u $salesforceDevOrgUserName -d -s -r $SFDC_PROD_URL
             - sfdx force:source:deploy --manifest=manifest/package.xml --testlevel=RunLocalTests -u $salesforceDevOrgUserName
